@@ -3,12 +3,12 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle: ''
+title: Qiyuan's Blog
+subtitle: Qiyuan's Blog
 description: ''
 keywords:
-author: John Doe
-language: en
+author: 冯启源
+language: zh-CN
 timezone: ''
 
 # URL
@@ -98,3 +98,7 @@ deploy:
   type: 'git'
   repo: https://github.com/csuqiyuan/csuqiyuan.github.io.git
   branch: master
+# pinyin
+permalink_pinyin:
+  enable: true
+  separator: '-' # default: '-'
