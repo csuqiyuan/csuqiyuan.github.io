@@ -10,12 +10,9 @@ tags:
 categories: Jenkins
 keywords: jenkins,job,job触发,jenkinsjob间触发,带参数
 ---
-&emsp;&emsp;
-最近在实习,工作内容多多少少跟 Jenkins 有点关系,几周的学习下来,对 Jenkins 也有了一定的了解.  
-&emsp;&emsp;
+最近在实习,工作内容多多少少跟 Jenkins 有点关系,一段时间的学习下来,对 Jenkins 也有了一定的了解.  
 就我个人愚见, Jenkins 的用法远比其官方文档所描述的多的多,文档事例仅针对 Jenkins pipeline 举例,对 Github , Gitlab 等代码管理平台上仓库的代码进行管道化的定义,以满足其编译,部署,测试等方面的需求.在我所在的小组维护的 Jenkins 集群中,我了解到了更多的用法. Jenkins 集群可以用于机器管理;一个 Job 可以使用 shell 、python 等脚本语言进行定义,可以实现如 代码编译、代码测试、应用后台管理、微服务部署、集群管理等,甚至可以模仿微服务架构,将一个频繁使用的功能创建多个 Job ,对这些 Job 实现类似"负载均衡"效果.  
-&emsp;&emsp;
-今天我的企业导师给我一个需求:简单来说就是要两个 Job 之间带参数触发(实际上还要复杂的多).在经过一段时间了解和学习,现总结一下 Jenkins job 之间实现触发的方式.
+昨天我导师给我一个需求:简单来说就是要两个 Job 之间带参数触发(实际上还要复杂的多).在经过一段时间了解和学习,现总结一下 Jenkins job 之间实现触发的方式.
 #### Parameterized Trigger Plugin  
 
 在 Jenkins 插件管理中添加 Parameterized Trigger Plugin,这个过程不累述.这个插件可以根据已经完成构建的结果,触发新 Job 或者传递参数.  
