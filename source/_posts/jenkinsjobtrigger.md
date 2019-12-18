@@ -1,5 +1,5 @@
 ---
-title: jenkinsjobtrigger
+title: Jenkins job间触发
 author: qiyuan
 top: true
 toc: false
