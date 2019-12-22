@@ -190,8 +190,8 @@ clicklove:
 # 在”关于”页面中配置个人信息，包括头像、职业和个人介绍.
 profile:
   avatar: /medias/avatar.jpg
-  career: 软件工程师.小米<br>后台开发工程师.腾讯
-  introduction: 就读于中南大学软件工程专业.曾任腾讯公司后台开发工程师.现任小米科技软件工程师.使用语言:Java,Python,GoLang,Shell.兴趣方向:容器,CI/CD.
+  career: 软件工程师(实习).小米<br>后台开发工程师(实习).腾讯
+  introduction: 就读于中南大学软件工程专业.曾在腾讯作为后台开发工程师实习.现在小米科技作为软件工程师实习.使用语言:Java,Python,GoLang,Shell.兴趣方向:容器,CI/CD.
 
 # config my projects informations in about page.
 # If you don't want to display this `My Projects` content, you can deactivate or delete this configuration.

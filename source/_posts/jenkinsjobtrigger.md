@@ -1,7 +1,7 @@
 ---
 title: Jenkins job间触发
 author: qiyuan
-top: true
+top: false
 toc: false
 date: 2019-12-18 11:14:50
 tags:
@@ -9,6 +9,7 @@ tags:
 - job触发
 categories: Jenkins
 keywords: jenkins,job,job触发,jenkinsjob间触发,带参数
+img: https://res.cloudinary.com/dkzvjuptx/image/upload/v1577004170/jenkinsjobtrigger/jenkins_ua0mg4.png
 ---
 ​		最近在实习,工作内容多多少少跟 Jenkins 有点关系,一段时间的学习下来,对 Jenkins 也有了一定的了解.  
 ​		就我个人愚见, Jenkins 的用法远比其官方文档所描述的多的多,文档事例仅针对 Jenkins pipeline 举例,对 Github , Gitlab 等代码管理平台上仓库的代码进行管道化的定义,以满足其编译,部署,测试等方面的需求.在我所在的小组维护的 Jenkins 集群中,我了解到了更多的用法. Jenkins 集群可以用于机器管理;一个 Job 可以使用 shell 、python 等脚本语言进行定义,可以实现如 代码编译、代码测试、应用后台管理、微服务部署、集群管理等,甚至可以模仿微服务架构,将一个频繁使用的功能创建多个 Job ,对这些 Job 实现类似"负载均衡"效果.  
