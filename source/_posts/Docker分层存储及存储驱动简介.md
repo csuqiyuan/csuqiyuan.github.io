@@ -43,7 +43,7 @@ Docker 18.03 中支持的联合文件系统可以在源代码中查到：
 
 使用 docker info 命令可以看到当前 docker 使用的是什么存储驱动，我这个使用的是 overlay2
 
-![](https://res.cloudinary.com/dkzvjuptx/image/upload/v1577009287/Docker分层存储及存储驱动简介/2_s0vj6o.png) )
+![](https://res.cloudinary.com/dkzvjuptx/image/upload/v1577009287/Docker分层存储及存储驱动简介/2_s0vj6o.png) 
 
 ### 分层存储
 
