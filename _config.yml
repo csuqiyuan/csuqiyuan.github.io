@@ -10,6 +10,8 @@ keywords:
 author: 冯启源
 language: zh-CN
 timezone: ''
+avatar: https://res.cloudinary.com/dkzvjuptx/image/upload/v1578820041/info/favicon_s4pmzz.jpg
+favicon: https://res.cloudinary.com/dkzvjuptx/image/upload/v1578820041/info/favicon_s4pmzz.jpg
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -91,7 +93,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: matery
+theme: material-x
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -104,6 +106,11 @@ permalink_pinyin:
   enable: true
   separator: '' # default: '-'
 # search
-search:
-  path: search.xml
-  field: post
+# search:
+#   path: search.xml
+#   field: post
+
+## material-x主题添加
+leancloud:
+  app_id: jwY5Gcq8reVKakGecE4pAoTb-gzGzoHsz
+  app_key: c271ro6eQjqM0FrGsPXJYUUR

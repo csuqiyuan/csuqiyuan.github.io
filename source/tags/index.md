@@ -1,6 +1,5 @@
 ---
-title: tags
-date: 2019-12-05 11:16:25
-type: "tags"
-layout: "tags"
+layout: tag
+index: true
+title: 所有标签
 ---

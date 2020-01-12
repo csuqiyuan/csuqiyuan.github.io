@@ -1,8 +1,11 @@
 ---
 title: Docker分层存储及存储驱动简介
-author: qiyuan
+description: 了解过 Docker 的人应该多多少少知道 Docker 是用一种分层的方式来存储镜像和容器。本文主要简单介绍了 Docker 存储结构，以及在这种存储结构下对使用 Docker 的各种建议等。
+thumbnail: https://res.cloudinary.com/dkzvjuptx/image/upload/v1577004386/Docker%E5%88%86%E5%B1%82%E5%AD%98%E5%82%A8%E5%8F%8A%E5%AD%98%E5%82%A8%E9%A9%B1%E5%8A%A8%E7%AE%80%E4%BB%8B/docker_fjs2xj.jpg
+author: 
+	name: qiyuan
+	avatar: https://res.cloudinary.com/dkzvjuptx/image/upload/v1578820041/info/favicon_s4pmzz.jpg
 top: true
-toc: false
 date: 2019-12-22 16:38:20
 tags: 
 - Docker
@@ -10,10 +13,9 @@ tags:
 - UnionFS
 categories: Docker
 keywords: docker,存储驱动,分层存储,镜像,UnionFS
-img: https://res.cloudinary.com/dkzvjuptx/image/upload/v1577004386/Docker%E5%88%86%E5%B1%82%E5%AD%98%E5%82%A8%E5%8F%8A%E5%AD%98%E5%82%A8%E9%A9%B1%E5%8A%A8%E7%AE%80%E4%BB%8B/docker_fjs2xj.jpg
 ---
 
-​		我最初是怎么接触到 Docker 的已经无法追溯，可能是大学期间闲来无事，不知道哪里看到了 Docker 的介绍，便在自己电脑上装了一个玩玩，在当时也没有意识到这项技术的应用性，感觉自己不怎么用得到，便再也没有进行更深入的理解。大三在腾讯实习时，导师是个容器大佬，做的也是容器相关的业务，而我早就把 Docker 的知识抛在脑后了。在这边我认识到容器是如何被用在生产环境中，通过 Kubernetes 来管理容器是多么的方便，自此对容器方面兴趣颇大。忙完秋招后，趁着这段比较闲的时间，我重新审视和学习容器这项技术，希望自己未来能在这方面有所建树。
+我最初是怎么接触到 Docker 的已经无法追溯，可能是大学期间闲来无事，不知道哪里看到了 Docker 的介绍，便在自己电脑上装了一个玩玩，在当时也没有意识到这项技术的应用性，感觉自己不怎么用得到，便再也没有进行更深入的理解。大三在腾讯实习时，导师是个容器大佬，做的也是容器相关的业务，而我早就把 Docker 的知识抛在脑后了。在这边我认识到容器是如何被用在生产环境中，通过 Kubernetes 来管理容器是多么的方便，自此对容器方面兴趣颇大。忙完秋招后，趁着这段比较闲的时间，我重新审视和学习容器这项技术，希望自己未来能在这方面有所建树。
 
 
 
