@@ -10,7 +10,7 @@ valine:
 ---
 
 {% raw %}<div class="style-example example">{% endraw %}
-<ul class="pure circle center about"><li><img  src="https://res.cloudinary.com/dkzvjuptx/image/upload/v1578738406/info/avatar_oeoum1.jpg"></li></ul>
+<ul class="pure circle center about"><li><img  src="https://res.cloudinary.com/dkzvjuptx/image/upload/v1578820041/info/favicon_s4pmzz.jpg"></li></ul>
 <hr>
 <center>
 	<p style="font-size: 2em;">冯启源</p>
