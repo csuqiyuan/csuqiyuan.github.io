@@ -114,3 +114,8 @@ permalink_pinyin:
 leancloud:
   app_id: jwY5Gcq8reVKakGecE4pAoTb-gzGzoHsz
   app_key: c271ro6eQjqM0FrGsPXJYUUR
+
+feed:
+    type: atom
+    path: atom.xml
+    limit: 20

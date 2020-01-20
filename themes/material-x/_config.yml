@@ -240,6 +240,8 @@ sidebar:
 
 # 社交信息
 social:
+  - icon: fas fa-rss
+    url: atom.xml
   - icon: fas fa-envelope
     url: mailto:qiyuan_csu@foxmail.com
   - icon: fab fa-github
