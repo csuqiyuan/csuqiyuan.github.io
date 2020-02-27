@@ -1,7 +1,7 @@
 ---
 title: Jenkins job间触发
 description: 得益于各种插件，Jenkins 的用法远比其官方文档上描述的多。这里我使用了两种不同的插件来实现 Jenkins Job 间的触发。
-thumbnail: https://res.cloudinary.com/dkzvjuptx/image/upload/v1577004170/jenkinsjobtrigger/jenkins_ua0mg4.png
+thumbnail: https://res.cloudinary.com/dkzvjuptx/image/upload/v1577004170/Jenkins/jenkinsjobtrigger/jenkins_ua0mg4.png
 author: 
 	name: qiyuan
 	avatar: https://res.cloudinary.com/dkzvjuptx/image/upload/v1578820041/info/favicon_s4pmzz.jpg

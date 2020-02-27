@@ -1,7 +1,7 @@
 ---
 title: Docker分层存储及存储驱动简介
 description: 了解过 Docker 的人应该多多少少知道 Docker 是用一种分层的方式来存储镜像和容器。本文主要简单介绍了 Docker 存储结构，以及在这种存储结构下对使用 Docker 的各种建议等。
-thumbnail: https://res.cloudinary.com/dkzvjuptx/image/upload/v1577004386/Docker%E5%88%86%E5%B1%82%E5%AD%98%E5%82%A8%E5%8F%8A%E5%AD%98%E5%82%A8%E9%A9%B1%E5%8A%A8%E7%AE%80%E4%BB%8B/docker_fjs2xj.jpg
+thumbnail: https://res.cloudinary.com/dkzvjuptx/image/upload/v1577004386/Docker/Docker%E5%88%86%E5%B1%82%E5%AD%98%E5%82%A8%E5%8F%8A%E5%AD%98%E5%82%A8%E9%A9%B1%E5%8A%A8%E7%AE%80%E4%BB%8B/docker_fjs2xj.jpg
 author: 
 	name: qiyuan
 	avatar: https://res.cloudinary.com/dkzvjuptx/image/upload/v1578820041/info/favicon_s4pmzz.jpg
