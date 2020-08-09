@@ -112,9 +112,9 @@ cover:
     home: true
     archive: true
     others: false # can be written in front-matter 'cover: true'
-  logo: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-Cover@3x.png
-  title: ''
-  subtitle: ''
+  # logo: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-Cover@3x.png
+  title: Qiyuan's Blog
+  subtitle: 
   search: A Wonderful Theme for Hexo # search bar placeholder
   features:
     - name: 首页
@@ -135,9 +135,10 @@ cover:
 # Navigation Bar
 navbar:
   logo: # choose [img] or [icon + title]
+  #这个是上面边栏图片，要改
     img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
-    icon:
-    title:
+    icon: 
+    title: 
   menu:
     # The following can be written in `blog/source/_data/menu.yml`
     - name: 首页
@@ -161,7 +162,7 @@ layout:
   # 文章列表（主页、自定义的列表）布局
   on_list:
     # 列表中每一篇文章的meta信息
-    meta: [title, author, category, date, wordcount, counter, valinecount, pin]
+    meta: [title, author, category, date, valinecount, pin]
     # 列表类页面的侧边栏
     sidebar: [blogger, category, tagcloud, qrcode]
     # read more button
@@ -174,14 +175,14 @@ layout:
     # 其中，title只在header中有效，music和thumbnail无需在这里设置，文章中有则显示
     # 如果tags放置在meta.header中，那么在post列表中不显示（因为卡片下方已经有了）
     meta:
-      header: [title, author, category, date, pin]
-      footer: [updated, tags, btns, share]
+      header: [title, author, category, date, wordcount, counter]
+      footer: [tags, btns, share]
     # 文章页面的侧边栏
     sidebar: [qrcode, toc]
   # 文章布局，参数继承自 on_page
   on_post:
     # 文章页脚，自动在每一篇文章末尾添加
-    article_footer: [references, related_repos, copyright, donate]
+    article_footer: [copyright]
   # 其他的页面布局暂时等于 on_list
 
 
@@ -192,8 +193,8 @@ meta:
   # 默认文章作者（可在front-matter中覆盖）
   author:
     avatar:
-    name: 请设置文章作者
-    url: /
+    name: 
+    url: /about
   # 文章创建日期
   date:
     icon: fas fa-calendar-alt
@@ -232,8 +233,8 @@ meta:
       img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png
     - id: weibo
       img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png
-    # - id: qrcode # 当id为qrcode时需要安装插件  npm i -S hexo-helper-qrcode
-    #   img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png
+    - id: qrcode # 当id为qrcode时需要安装插件  npm i -S hexo-helper-qrcode
+      img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png
     # - id: telegram
     #   img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/telegram.png
   # 链接
@@ -275,11 +276,11 @@ widget:
   blogger:
     class: blogger
     display: [desktop, mobile] # [desktop, mobile]
-    avatar: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
+    avatar: https://res.cloudinary.com/dkzvjuptx/image/upload/v1578820041/info/favicon_s4pmzz.jpg
     shape: rectangle # circle, rectangle
     url: /about/
-    title:
-    subtitle:
+    title: 冯启源
+    subtitle: 我爱学习，学习爱我
     jinrishici: true # Poetry Today. You can set a string, and it will be displayed when loading fails.
     social: true
   # ---------------------------------------
@@ -337,6 +338,7 @@ widget:
       - permalink
   # ---------------------------------------
   # qrcode widget
+  # 文末显示二维码
   donate:
     class: qrcode
     display: [desktop, mobile] # [desktop, mobile]
@@ -374,7 +376,7 @@ widget:
         unit: '篇'
       runtime:
         enable: true
-        data: '2020/01/01'    # 填写建站日期
+        data: '2019/12/18'    # 填写建站日期
         text: '已运行时间：'
         unit: '天'
       wordcount:
@@ -402,17 +404,15 @@ widget:
 
 footer:
   # layout of footer: [aplayer, social, license, info, copyright]
-  layout: [aplayer, social, license, info, copyright]
+  layout: [social, license, info, copyright]
   social:
-    - icon: fas fa-rss
-      url: atom.xml
+    # - icon: fas fa-rss
+    #   url: atom.xml
     - icon: fas fa-envelope
-      url: mailto:me@xxx.com
+      url: qiyuan098@gmail.com
     - icon: fab fa-github
-      url: https://github.com/xaoxuu
-    - icon: fas fa-headphones-alt
-      url: https://music.163.com/#/user/home?id=63035382
-  copyright: '[Copyright © 2017-2020 XXX](/)'
+      url: https://github.com/csuqiyuan
+  copyright: '[Copyright © 2019-2020 qiyuanfeng](/)'
   # You can add your own property here. (Support markdown, for example: br: '<br>')
   br: '<br>'
 
@@ -476,7 +476,7 @@ plugins:
   busuanzi: https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js
 
   # npm i --save hexo-wordcount
-  wordcount: #true
+  wordcount: true
 
   ######## Plugins for ...
   # Button Ripple Effect
@@ -595,11 +595,11 @@ comments:
   # Valine
   # https://valine.js.org/
   valine: # 请将 appId appKey 修改为自己的，否则评论数据是共享的。
-    appId: # your appId
-    appKey: # your appKey
+    appId: jwY5Gcq8reVKakGecE4pAoTb-gzGzoHsz
+    appKey: c271ro6eQjqM0FrGsPXJYUUR
     # js: https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js
     meta: nick,mail,link # valine comment header info
-    requiredFields: ['nick','mail']
+    requiredFields: []
     enableQQ: true # Unstable avatar link
     avatar: robohash # gravatar style https://valine.js.org/avatar
     pageSize: 10 # comment list page size

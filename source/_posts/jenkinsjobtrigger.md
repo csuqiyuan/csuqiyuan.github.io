@@ -5,7 +5,7 @@ thumbnail: https://res.cloudinary.com/dkzvjuptx/image/upload/v1577004170/Jenkins
 author: 
 	name: qiyuan
 	avatar: https://res.cloudinary.com/dkzvjuptx/image/upload/v1578820041/info/favicon_s4pmzz.jpg
-top: false
+pin: false
 date: 2019-12-18 11:14:50
 tags:
 - jenkins

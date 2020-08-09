@@ -3,7 +3,7 @@ title: Java 8 新特性——Optional  使用详解
 author:
   name: qiyuan
   avatar: https://res.cloudinary.com/dkzvjuptx/image/upload/v1578820041/info/favicon_s4pmzz.jpg
-top: false
+pin: false
 date: 2020-02-25 21:55:13
 description:  使用 Optional，别用 null
 thumbnail: https://res.cloudinary.com/dkzvjuptx/image/upload/v1582735810/Java/Java%208%20%E6%96%B0%E7%89%B9%E6%80%A7%E2%80%94%E2%80%94%E7%94%B1%20Optional%20%E5%BC%95%E5%8F%91%E7%9A%84%E6%80%9D%E8%80%83/java_8_mygmrc.png

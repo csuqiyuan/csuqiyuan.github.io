@@ -20,13 +20,16 @@ valine:
 
 {% raw %}</div>{% endraw %}
 
+
 #### 个人简介
 就读于中南大学软件工程专业.
-现在小米作为软件工程师实习.
-曾在腾讯作为后台开发工程师实习.
+现在腾讯后台开发工程师.
+曾在小米作为软件工程师实习.
+
 #### 使用语言:
-Java， Python， GoLang， Shell， JavaScript.
+Java， GoLang， Python， Shell， JavaScript.
 会写点前端.
+
 #### 兴趣方向:
-Web，容器，CI/CD.
+Web，容器，分布式，微服务，devops
 
