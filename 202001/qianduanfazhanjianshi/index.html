@@ -1,0 +1,1595 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://volantis.js.org/#3.0.0-rc.1'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+  <title>前端发展简史 - Qiyuan</title>
+  
+    <meta name="keywords" content="前端, 历史, 前端发展简史">
+  
+
+  
+    <meta name="description" content="我虽然也写过一段时间前端，但对前端的发展历史并没有什么了解，总是盲目地进行前后端分离和 MVVC。这篇文章以及其姊妹篇 “Node.js 换个角度看世界” 对前端的整体发展历程和后面客户端/服务端渲染之争有了较完整的描述。">
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="Qiyuan" type="application/atom+xml">
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+    <link rel="shortcut icon" type='image/x-icon' href="https://res.cloudinary.com/dkzvjuptx/image/upload/v1578820041/info/favicon_s4pmzz.jpg">
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post' style="display: none;">
+      <div class='cover-body'>
+  <div class='a'>
+    
+    
+      <p class="title">Qiyuan's Blog</p>
+    
+    
+  </div>
+  <div class='b'>
+    <div class='menu navigation dock'>
+      <div class='list-h'>
+        
+          
+            <a href="/"
+              
+              
+              id="home">
+              <i class='fas fa-home fa-fw'></i><p>首页</p>
+            </a>
+          
+            <a href="/archives/"
+              
+              
+              id="archives">
+              <i class='fas fa-archive fa-fw'></i><p>归档</p>
+            </a>
+          
+            <a href="/categories/"
+              
+              
+              id="categories">
+              <i class='fas fa-folder-open fa-fw'></i><p>分类</p>
+            </a>
+          
+            <a href="/about/"
+              
+              
+              id="about">
+              <i class='fas fa-info-circle fa-fw'></i><p>关于</p>
+            </a>
+          
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+    </cover>
+    <header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+            <img no-lazy class='logo' src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png'/>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-home fa-fw'></i>首页
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-home fa-fw'></i>首页
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  </div>
+  
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper' id="pjax-container">
+      
+        <!--此文件用来存放一些不方便取值的变量--> 
+<!--思路大概是将值藏到重加载的区域内--> 
+ 
+ 
+ 
+<div id="pjax-data" style="display: none"> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">前端发展简史</div> 
+  <div id="pjax-enable-cover">true</div> 
+  <div id="pjax-comment-path">none</div> 
+  <div id="pjax-comment-placeholder">none</div> 
+</div> 
+ 
+ 
+<script> 
+  // 处理封面 此时 jquery 还没加载 
+  if ("none" == "none") { // 移除封面 
+    document.getElementsByClassName('cover')[0].style.display = "none"; 
+    document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
+  } else { 
+    if ("none" == "blog") { // 半屏 
+      document.getElementsByClassName('cover')[0].classList.remove("full"); 
+      document.getElementsByClassName('cover')[0].classList.add("half"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
+    } else if ("none" == "docs") { // 全屏 
+      document.getElementsByClassName('cover')[0].classList.remove("half"); 
+      document.getElementsByClassName('cover')[0].classList.add("full"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = ""; 
+    } 
+    document.getElementsByClassName('cover')[0].style.display = ""; 
+    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
+  } 
+</script> 
+
+      
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+        <a title='前端发展简史' href='/202001/qianduanfazhanjianshi/'><img class='thumbnail' src='https://res.cloudinary.com/dkzvjuptx/image/upload/v1578824486/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E5%8F%91%E5%B1%95%E7%AE%80%E5%8F%B2/0_yvqyhl.png'></a>
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/202001/qianduanfazhanjianshi/">
+      前端发展简史
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a class='author' href="" rel="nofollow">
+    <img no-lazy src="https://res.cloudinary.com/dkzvjuptx/image/upload/v1578820041/info/favicon_s4pmzz.jpg">
+    <p>qiyuan</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/%E5%89%8D%E7%AB%AF/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>前端</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年1月12日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：5.2k字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：18分钟</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+  <div class="new-meta-item browse valine">
+    <a class='notlink'>
+      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+      
+      <span id="/202001/qianduanfazhanjianshi/" class="leancloud_visitors" data-flag-title="前端发展简史">
+      <p>
+        <span class="leancloud-visitors-count"></span>
+      </p>
+      </span>
+    </a>
+  </div>
+
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <p>在知乎上闲逛，偶尔看到一篇文章讲前端发展简史的，感觉写的还蛮不错。我虽然也写过一段时间前端，但对前端的发展历史并没有什么了解，总是盲目地进行前后端分离和 MVVC，不知道服务端渲染和客户端渲染的优劣，不明白 node 中间层存在的意义，反正大家都这么做，我也就跟着这么做，这篇文章以及其姊妹篇 “Node.js 换个角度看世界” 对前端的整体发展历程和后面客户端/服务端渲染之争有了较完整的描述。经作者本人同意，转载到自己的博客上。</p>
+<p>原文<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/91842778">点击这里</a></p>
+<p>下面是文章内容：</p>
+<h2 id="什么是前端"><a href="#什么是前端" class="headerlink" title="什么是前端"></a>什么是前端</h2><p>回答这个问题之前，我想起了一道非常经典的前端面试题：“从输入URL到页面呈现在你面前到底发生了什么？”这个题目可以回答的很简单，但仔细思考，也可以回答得很深，这个过程涉及的东西很多。先看一张图：</p>
+<p><img src="https://res.cloudinary.com/dkzvjuptx/image/upload/v1578823581/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E5%8F%91%E5%B1%95%E7%AE%80%E5%8F%B2/1_xmyqpd.jpg" alt=""> 简单说就是</p>
+<ol>
+<li>DNS (Domain Name System) 解析</li>
+<li>TCP (Transmission Control Protocol) 链接</li>
+<li>HTTP (HyperText Transfer Protocol) 请求</li>
+<li>HTTP 响应</li>
+<li>HTML解析 &amp; CSS渲染</li>
+<li>JS 解析执行</li>
+</ol>
+<p>为什么提这个呢，因为这是一整个web服务生命周期的全过程，而在最早的时候是根本没有前端或者后端的概念的，当时就是用 Dreamweaver 写 <code>html</code> 静态页面，然后部署到一台电脑的 IIS (Internet Information Services) 上，当请求这个页面时，返回这个 <code>html</code> 文件。再后面一点，服务端变得复杂了一些，<code>html</code> 页面开始使用各种模板来写，譬如 <code>Java</code> 系列的 <code>FreeMarker</code>，还有 <code>ASP</code> 、 <code>PHP</code> 等等。 此时，前后端开发是一体的，最多也就是模板的编写算是最初的前端范畴，但那个时候，这个活儿往往都是现在的后端开发去干的。</p>
+<p>下面是一个比较典型的 <code>PHP</code> 的模板：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span><span class="tag">&lt;<span class="name">title</span>&gt;</span>Car &#123;&#123; $car-&gt;id &#125;&#125;<span class="tag">&lt;/<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Car &#123;&#123; $car-&gt;id &#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span>Make: &#123;&#123; $car-&gt;make &#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span>Model: &#123;&#123; $car-&gt;model &#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span>Produced on: &#123;&#123; $car-&gt;produced_on &#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>随着 2005年 Ajax (<code>Asynchronous JavaScript and XML</code>) 的诞生，彻底得改变了这一切，<code>JS</code> 脚本可以独立向服务器请求数据，拿到数据后，进行处理并更新网页，这个过程中，后端只负责提供数据，其他事情都由前端来做，就是从这个时期开始，前端逐渐变得复杂，也是从在这个时期开始，设计师和后端开发已经开始放弃前端了，开发的岗位角色悄悄地发生了变化：</p>
+<p><img src="https://res.cloudinary.com/dkzvjuptx/image/upload/v1578823581/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E5%8F%91%E5%B1%95%E7%AE%80%E5%8F%B2/2_ybopzw.jpg" alt=""></p>
+<p>聊到现在，什么是前端的问题应该呼之欲出了:</p>
+<ul>
+<li><strong>前端： 针对浏览器的开发，代码在浏览器中运行</strong></li>
+<li><strong>后端： 针对服务器的开发，代码在服务器中运行</strong></li>
+</ul>
+<p><img src="https://res.cloudinary.com/dkzvjuptx/image/upload/v1578823581/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E5%8F%91%E5%B1%95%E7%AE%80%E5%8F%B2/3_lzotkq.jpg" alt=""></p>
+<p>可以说 Ajax 的出现是前端岗位出现的转折点，但并不是前端的起点，前端的起点，我们稍后聊 <code>JavaScript</code> 的历史会聊到。</p>
+<p>既然前端是针对浏览器的开发，那一个页面呈现出来，在浏览器里做了什么呢？</p>
+<p>浏览器收到服务器响应的 <code>HTTP</code> 报文后，边解析边渲染。首先浏览器解析 <code>html</code> 文件构建 <code>DOM</code> 树，然后解析 <code>CSS</code> 文件构建渲染树，等到渲染树构建完成后，浏览器开始布局渲染树并将其绘制到屏幕上。除了表现之外，我们还需要与页面交互，所以离不开 <code>JS</code>，而 <code>JS</code> 的解析和运行是由浏览器中的 <code>JS</code> 引擎来完成，最有名的就是2008年由 Google 发布的 V8。</p>
+<p>所以，跑在浏览器的代码无外乎这三种：<strong><code>HTML</code> + <code>CSS</code> + <code>JS</code></strong></p>
+<p><strong><code>HTML(HyperText Markup Language)</code></strong> 全称是超文本标记语言，它不是一门编程语言，而是一种用来告知浏览器如何组织页面的标记语言。它由一系列的元素（elements）组成，这些元素可以用来包围不同部分的内容，使其以某种方式呈现或者工作。</p>
+<p><img src="https://res.cloudinary.com/dkzvjuptx/image/upload/v1578823579/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E5%8F%91%E5%B1%95%E7%AE%80%E5%8F%B2/4_w0o4q9.jpg" alt=""></p>
+<p> 我们在浏览器中任意打开一个页面的源码，都会看到类似如下的内容： </p>
+<p><img src="https://res.cloudinary.com/dkzvjuptx/image/upload/v1578823578/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E5%8F%91%E5%B1%95%E7%AE%80%E5%8F%B2/5_drtyp8.jpg" alt=""></p>
+<p> <strong><code>CSS(Cascading Style Sheets)</code></strong> 全称是层叠样式表，它是用来样式化和排版网页的 —— 例如更改网页内容的字体、颜色、大小和间距，将内容分割成多列或者加入动画以及别的装饰型效果。它通过选择器选中上面提到的 <code>HTML</code> 元素，然后为选中的元素添加颜色，间距等样式。如下所示： </p>
+<p><img src="https://res.cloudinary.com/dkzvjuptx/image/upload/v1578823578/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E5%8F%91%E5%B1%95%E7%AE%80%E5%8F%B2/6_he75ca.jpg" alt=""></p>
+<p> 每一个有追求有品味的页面，都在借 <code>CSS</code> 给浏览者说一句话：”<strong>我怎么这么好看！</strong>“ </p>
+<p><img src="https://res.cloudinary.com/dkzvjuptx/image/upload/v1578823579/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E5%8F%91%E5%B1%95%E7%AE%80%E5%8F%B2/7_xtebla.jpg" alt=""></p>
+<p> <strong><code>JS(JavaScript)</code></strong> 是一种具有函数优先的轻量级、解释型编程语言。它因互联网而生，紧跟着浏览器的出现而问世。<strong>它是一门计算机语言</strong>，随着前端的迅猛发展，它已经不像刚开始出现时那样，只是为了做了一些页面的校验，已经成了构建企业级应用的重要语言之一，目前在全球范围的使用情况排名第三。 </p>
+<p><img src="https://res.cloudinary.com/dkzvjuptx/image/upload/v1578823579/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E5%8F%91%E5%B1%95%E7%AE%80%E5%8F%B2/8_elu07u.jpg" alt=""></p>
+<p> 如果用一个人来作比喻网页的话，<code>HTML</code> 就是一个人的骨骼， <code>CSS</code> 就是一个人的血肉，而 <strong><code>JS</code> 则是一个人的灵魂</strong>！ </p>
+<p><img src="https://res.cloudinary.com/dkzvjuptx/image/upload/v1578823579/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E5%8F%91%E5%B1%95%E7%AE%80%E5%8F%B2/9_zf0gpx.jpg" alt=""></p>
+<blockquote>
+<p>当然随着V8的诞生以及Node的问世，让 <code>JavaScript</code> 可以跑在非浏览器中，进一步拓展了前端的范畴，下一节我们聊这方面的事情。</p>
+</blockquote>
+<p><strong>前端开发工程师</strong> 是近十年随着前端发展才真正开始受到重视的一个新兴职业。刚才我们提到前端的三个组成部分：<strong><code>HTML</code> + <code>CSS</code> + <code>JS</code></strong>，这三个部分看起来听起来都感觉很简单，也正因为如此，前端开发领域有很多自学成“才”的同行，我甚至在校招面试时听到候选人说是因为觉得后端太难，其它岗位面试通不过才选择前端的。确实，前端开发的入门门槛低，与后端语言先慢后快的学习曲线相比，前端开发的学习曲线是先快后慢，后面的学习曲线越来越陡峭，每前进一步都很难，导致大多数前端开发都停留在初级阶段。</p>
+<p><img src="https://res.cloudinary.com/dkzvjuptx/image/upload/v1578823579/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E5%8F%91%E5%B1%95%E7%AE%80%E5%8F%B2/10_ip2x1m.jpg" alt=""></p>
+<p>目前，前端开发工程师主要分布在这些地方：</p>
+<ul>
+<li>大公司</li>
+<li>互联网公司</li>
+<li>传统行业</li>
+<li>创业公司</li>
+<li>自由职业</li>
+<li>外包、自己接项目</li>
+<li>行业大牛</li>
+</ul>
+<p>创业公司的特点是开发团队人数不多，但有一个共同点：技术leader是从大公司历练出来的，因为船小好掉头的原因，往往技术的实效性要比大型互联网公司好一些。 而大型互联网公司的特点是体系、流程很完善(久经考验的)，服务的用户、体量都非常大，部门人数多、协同开发的机制很完善，内部不缺比你牛逼的人，身边的同事都不是特别菜的，可能最菜的就是你自己。</p>
+<h2 id="JavaScript-语言的历史"><a href="#JavaScript-语言的历史" class="headerlink" title="JavaScript 语言的历史"></a>JavaScript 语言的历史</h2><p>JS 作为网页的灵魂，它是前端开发中最重要的一部分，所以接下来我们来看看 JavaScript 作为一门计算机语言是怎么诞生的，又经历了怎么样的发展。</p>
+<p><strong>1990年12月</strong>，欧洲核子研究中心（CERN）的科学家 Tim Berners-Lee 发明了万维网（World Wide Web），今年的3月12日，欧洲核子研究中心还举办了系列活动，庆祝万维网发明三十周年。当时的网页还只能在操作系统的终端里浏览，也就是说只能使用命令行操作，网页内容都是在字符窗口中显示，这当然非常不方便。</p>
+<blockquote>
+<p>1994年5月中科院高能物理研究所计算中心的许榕生研究员去 CERN 参加了由380人参加的第一届国际 WWW 大会。会后，他带领一批年轻人很快在高能所计算中心的一台 PC 机上用 Linux 创建了中国第一个 WWW 服务器，并推出第一个网站 <code>www.ihep.ac.cn</code> (这个域名现在还在使用) 和英文网页（IHEP/China Home Page），该网站成为当时亚洲少数几个网站之一。</p>
+</blockquote>
+<p><img src="https://res.cloudinary.com/dkzvjuptx/image/upload/v1578823580/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E5%8F%91%E5%B1%95%E7%AE%80%E5%8F%B2/11_elznla.jpg" alt=""></p>
+<p> <strong>1992年底</strong>，美国国家超级电脑应用中心（NCSA）开始开发一个独立的浏览器，叫做 Mosaic。这是人类历史上第一个浏览器，从此网页可以在图形界面的窗口浏览。Mosaic 是后来大家耳熟能详的网景浏览器（Netscape Navigator）的前身。那时候还没有 Ajax，所以用户每次操作，都会重新加载整个页面，于是 Netscape 公司很快就发现一个问题，如果用户还没有输入内容，就点了“发送”摁钮，服务器发现后把整个页面重新返回给客户端，仅仅只是在页面中添加了一个错误提示，那个时代网速很慢上网很贵，到服务器才发现这一点很明显太晚了，最好能在用户发出数据之前，就告诉用户“请填写内容”。这就需要在网页中嵌入小程序，让浏览器检查每一栏是否都填写了。 </p>
+<p><img src="https://res.cloudinary.com/dkzvjuptx/image/upload/v1578823579/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E5%8F%91%E5%B1%95%E7%AE%80%E5%8F%B2/12_xbtzqn.jpg" alt=""></p>
+<p><strong>1995年4月</strong>，Netscape 公司雇佣了程序员 Brendan Eich 开发这种网页脚本语言，Brendan Eich 只用了10天，就设计完成了这种语言的第一版，最初名字叫做 Mocha，1995年9月改为 LiveScript。12月，Netscape 公司与 Sun 公司（Java 语言的发明者和所有者）达成协议，后者允许将这种语言叫做 JavaScript。这样一来，Netscape 公司可以借助 Java 语言的声势，而 Sun 公司则将自己的影响力扩展到了浏览器。实际上 JavaScript 与 Java 没啥太大关系！</p>
+<p><strong>1996年8月</strong>，微软模仿 JavaScript 开发了一种相近的语言，取名为JScript（JavaScript 是 Netscape 的注册商标，微软不能用），首先内置于IE 3.0。Netscape 公司面临丧失浏览器脚本语言的主导权的局面。于是，Netscape 公司在1996年11月决定将 JavaScript 提交给国际标准化组织 ECMA (European Computer Manufacturers Association), 希望 JavaScript 能够成为国际标准，以此抵抗微软。</p>
+<p><strong>1997年7月</strong>，ECMA 组织发布262号标准文件（ECMA-262）的第一版，规定了浏览器脚本语言的标准，并将这种语言称为 ECMAScript。之所以不叫 JavaScript，一方面是由于商标的关系，Java 是 Sun 公司的商标，根据一份授权协议，只有 Netscape 公司可以合法地使用 JavaScript 这个名字，且 JavaScript 已经被 Netscape 公司注册为商标，另一方面也是想体现这门语言的制定者是 ECMA，不是 Netscape，这样有利于保证这门语言的开放性和中立性。因此，ECMAScript 和 JavaScript 的关系是，前者是后者的规格，后者是前者的一种实现。在日常场合，这两个词是可以互换的。</p>
+<p>接下来的两年，连续发布了 ECMAScript 2.0（1998 年 6 月）和 ECMAScript 3.0（1999 年 12 月）。3.0 版是一个巨大的成功，在业界得到广泛支持，成为通行标准，奠定了 JavaScript 语言的基本语法，以后的版本完全继承。<strong>直到今天，初学者一开始学习 JavaScript，其实就是在学 3.0 版的语法</strong>。</p>
+<p><strong>2000年</strong>，ECMAScript 4.0 开始酝酿。这个版本最后没有通过，但是它的大部分内容被 ES6 继承了。因此，ES6 制定的起点其实是 2000 年。为什么 ES4 没有通过呢？因为这个版本太激进了，对 ES3 做了彻底升级（也就是现在的ES6），引来了以 Yahoo、Microsoft、Google 为首的大公司的强烈反对，ECMA 开会决定，中止 ECMAScript 4.0 的开发。</p>
+<blockquote>
+<p>只有 JavaScript 的创造者 Brendan Eich 所在的 Mozilla 公司 坚持ES4的草案，有时候要创点新真得不容易！</p>
+</blockquote>
+<p><strong>2015年6月</strong>，ECMAScript 6 正式发布，并且更名为“ECMAScript 2015”。虽然从ES3之后，陆续发了 ES5 以及 ES5.1，但都是涉及现有功能改善的一小部分。</p>
+<p>对于前端开发来说，接受并熟悉 ES6 是比较困难的，毕竟当年 Google 就接受不了，何况 ES6 是集过去15年的精华于一身。</p>
+<h2 id="Web开发技术演进"><a href="#Web开发技术演进" class="headerlink" title="Web开发技术演进"></a>Web开发技术演进</h2><p>聊完 JavaScript 的历史，我们可以看到，它并不随前端的发展呈正相关，因为它在很长一段时间，并没有什么变化。所以接下来聊聊前端技术演进的历史，看看这些年前端都发生了什么。</p>
+<h3 id="Web-2-0"><a href="#Web-2-0" class="headerlink" title="Web 2.0"></a>Web 2.0</h3><p>前面提到的 2005 年诞生的 Ajax，促进了前后端的分离。其实是在这一年谷歌发布了测试版本的谷歌地图，并在这个项目大量运用让网页透过 Javascript 以 XML 格式来回传数据、达到异步更新网页内容的技术，这在当时是一个跨时代的壮举，让用户终于有机会看到不需要刷新整个页面就可以更新状态的地图，我们也看到了异步操作是如何给网站用户带来良好体验的。</p>
+<p><img src="https://res.cloudinary.com/dkzvjuptx/image/upload/v1578823580/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E5%8F%91%E5%B1%95%E7%AE%80%E5%8F%B2/13_krlwhd.jpg" alt=""></p>
+<p>不夸张的说，这一年算得上是 Web 开发技术发展的元年。Web也从 1.0 的时代，步入 2.0 的时代。</p>
+<h3 id="MVC-model-view-controller"><a href="#MVC-model-view-controller" class="headerlink" title="MVC (model-view-controller)"></a>MVC (model-view-controller)</h3><p>前端可以通过 Ajax 获取数据，因此也就有了处理数据的需求，于是就促使了前端 MVC 的诞生。</p>
+<p>我第一个前端项目就是使用 MVC 模式做的，使用的是 ExtJs，它曾经是一个很好的企业级 Web 富客户端应用开发平台，它做出来的页面效果特别酷炫。如下图所示：</p>
+<p><img src="https://res.cloudinary.com/dkzvjuptx/image/upload/v1578823579/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E5%8F%91%E5%B1%95%E7%AE%80%E5%8F%B2/14_dcg5oi.jpg" alt=""></p>
+<p>而我在做这个项目时就应用了 MVC 的模式。</p>
+<ul>
+<li>视图（View）：用户界面</li>
+<li>控制器（Controller）：业务逻辑</li>
+<li>模型（Model）：数据模型</li>
+</ul>
+<p>View 作为用户界面，发送指令给 Controller，Controller 要求 Model 改变状态，同时 Model 把更新过的数据发送给 View 反馈给用户。</p>
+<p>MVC 模型最核心的一点就是 <strong>所有通信都是单向的</strong></p>
+<p><img src="https://res.cloudinary.com/dkzvjuptx/image/upload/v1578823580/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E5%8F%91%E5%B1%95%E7%AE%80%E5%8F%B2/15_t6iyos.jpg" alt=""></p>
+<p>其实生活当中，MVC 的设计思想很多地方都有所体现，以家用微波炉为例，可以将它也理解成三层结构。微波炉的外观以及上面的操作摁钮就是”视图层”（view），而其内部的微波产生装置磁控管则是”数据层”（Model），这里的”数据”可以理解成”核心功能”。把操作摁钮的指令转化为对磁控管的操作则是由“控制器层”的电路板来实现的。</p>
+<p>如果现在要给微波炉更换一个新潮的外壳，或者更换一个更大功率的磁控管，完全可以在不更改其他层的情况下实现。<strong>每一层都是独立的，这就是 MVC 模式的最大优势。</strong></p>
+<p><img src="https://res.cloudinary.com/dkzvjuptx/image/upload/v1578823580/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E5%8F%91%E5%B1%95%E7%AE%80%E5%8F%B2/16_rsoizp.jpg" alt=""></p>
+<p>在这个阶段的后期，前端逐渐开始有了一点工程化的影子，并且开始受 CommonJS 的影响，有了模块化编程的概念，诞生了相应的 CMD 和 AMD 的规范。开始有了构建工具 Grunt/Gulp，开始有了编码的规范 JsLint。</p>
+<h3 id="MVVM-Model-View-ViewModel"><a href="#MVVM-Model-View-ViewModel" class="headerlink" title="MVVM (Model-View-ViewModel)"></a>MVVM (Model-View-ViewModel)</h3><p>MVVM 同样是一种软件架构模式，它是在 MVC 的基础上演进过来的，去掉了 MVC 中的 Controller，增加了数据的双向绑定。</p>
+<p>最有代表性的框架就是 Google 公司推出的 Angular， 它的风格属于 HTML 语言的增强，核心概念就是数据双向绑定。</p>
+<p><img src="https://res.cloudinary.com/dkzvjuptx/image/upload/v1578823580/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E5%8F%91%E5%B1%95%E7%AE%80%E5%8F%B2/17_twic92.jpg" alt=""></p>
+<p> Vue也可以算是 MVVM 模型，虽然它没有完全遵守 MVVM 的设计，但受到了 MVVM 的启发，在最开始的时候也是双向数据绑定，并且一直使用 vm 表示 View-Model。就以 Vue为例，简单看下 MVVM 的思想。 </p>
+<p><img src="https://res.cloudinary.com/dkzvjuptx/image/upload/v1578823580/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E5%8F%91%E5%B1%95%E7%AE%80%E5%8F%B2/18_zsps0r.jpg" alt=""></p>
+<p><img src="https://res.cloudinary.com/dkzvjuptx/image/upload/v1578823580/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E5%8F%91%E5%B1%95%E7%AE%80%E5%8F%B2/19_xsuv93.jpg" alt=""></p>
+<h3 id="SPA-single-page-application"><a href="#SPA-single-page-application" class="headerlink" title="SPA (single-page application)"></a>SPA (single-page application)</h3><p>SPA 是单页应用的意思，它是区分传统模式而言的。我们一开始就探讨过从输入URL到页面呈现在我们面前的过程，也熟悉了 <code>HTML</code> 、 <code>CSS</code> 和 <code>JS</code>。现在换个角度来看这个过程：</p>
+<p><img src="https://res.cloudinary.com/dkzvjuptx/image/upload/v1578823580/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E5%8F%91%E5%B1%95%E7%AE%80%E5%8F%B2/20_zahijm.jpg" alt=""></p>
+<p>当客户端发起页面请求后，后端收到请求，然后取出数据库中的数据，组装好 <code>HTML</code>，然后返回 <code>HTML</code> 、 <code>CSS</code> 和 <code>JS</code>。有了 Ajax 后，我们在当前页面可以重新获取数据，并更新页面内容。但当我们切换页面，也就是有页面跳转时，整个过程会从头再来一次。精益求精的前端开发者们这个时候就在考虑，既然 Ajax 可以在当前页面获取数据并随时更新当前页面，<strong>那是不是可以做到切换页面时也只通过 Ajax 获取数据更新页面，而不全部重新加载呢？</strong></p>
+<p>答案当然是可以！如下图所示，用户第一次发起页面请求时，后端收到请求，然后取出数据库中的数据，返回 <code>CSS</code> 和 <code>JS</code>文件，<code>JS</code> 文件包括了页面切换逻辑的处理，这是单页应用实现的关键，它利用 Hash 或者 History 的技术，实现了当切换页面时，首先通过 Ajax 获取到新页面需要的数据，然后由 <code>JS</code> 根据要切换到的网址，使用获取到的数据来拼接出要展示页面的 <code>HTML</code>。整个切换页面的动作全部由前端来完成了。这就是单页应用，所有的资源只在第一次页面请求时被加载，后面都只会发起 Ajax 请求获取数据而已。</p>
+<p><img src="https://res.cloudinary.com/dkzvjuptx/image/upload/v1578823580/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E5%8F%91%E5%B1%95%E7%AE%80%E5%8F%B2/21_ozsza8.jpg" alt=""></p>
+<h3 id="SSR-server-side-render"><a href="#SSR-server-side-render" class="headerlink" title="SSR (server side render)"></a>SSR (server side render)</h3><p>SPA 让 web 变成了应用的形态，它是客户端渲染（client side render）。客户端渲染有它的弊端，譬如没法做 SEO(Search Engine Optimization)，由于所有的 <code>JS</code> 和 <code>CSS</code>会在首次访问时被全部加载，并且 <code>HTML</code> 是在前端组装的，就势必导致首屏加载以及渲染的时间会增加，影响用户体验。</p>
+<p><img src="https://res.cloudinary.com/dkzvjuptx/image/upload/v1578823580/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E5%8F%91%E5%B1%95%E7%AE%80%E5%8F%B2/22_rawqx6.jpg" alt=""></p>
+<p> 于是，现在又争先恐后的回到服务端渲染，想想真得挺可笑的，十年前为了搭上 Ajax 的班车纷纷做SPA，做客户端渲染，现在反而又想着法儿的要重新做服务端渲染。 </p>
+<p><img src="https://res.cloudinary.com/dkzvjuptx/image/upload/v1578823581/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E5%8F%91%E5%B1%95%E7%AE%80%E5%8F%B2/23_onkm1p.jpg" alt=""></p>
+<p>其实本质是一样的，所以这里其实是有历史包袱的，在项目开始之前，先想想清楚到底有没有必要做成 SPA 比较重要，而不是一味的趋之若鹜。</p>
+<p>当然现在的服务端渲染和之前的服务端渲染在形式上还是有区别的：</p>
+<p>之前的服务端渲染基本是围绕页面为中心的开发模式，只需要处理 模板-&gt; <code>html</code>字符串的转换，性能要优于现在的服务端渲染</p>
+<p>现在的服务端渲染基本是围绕组件为中心的开发模式，开发效率和可维护性当然更高，组件也可以统一通过模块构建工具如webpack一并处理。</p>
+<p>有一些 web 应用如果就应该使用 SPA 模式，但又想要 SEO 怎么解决呢？</p>
+<p>当搜索引擎的网络爬虫过来的时候，其实是可以通过头信息判断的，于是有一种创新的解决方案，可以在中间层写个服务，对请求进行拦截，譬如 Rendora 就是解决这个问题的，之前写好的项目一句不用改，只需新起 Rendora 服务，对于爬虫的请求额外增加服务端渲染，返回生成好的 <code>html</code> 就好了，对于非爬虫，之前该怎么玩儿就怎么玩儿。</p>
+<h3 id="Node-amp-全栈"><a href="#Node-amp-全栈" class="headerlink" title="Node &amp; 全栈"></a>Node &amp; 全栈</h3><p>2009年，Node 项目诞生，它是服务器上的 JavaScript 运行环境。Node的出现令前端开发拥有了控制服务器的能力：</p>
+<p>Node = JavaScript + 操作系统 API</p>
+<p>下一节聊聊 Node</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="https://link.zhihu.com/?target=https%3A//wangdoc.com/javascript/basic/history.html">JavaScript 语言的历史</a></p>
+<p><a href="https://link.zhihu.com/?target=https%3A//juejin.im/post/5b5adc9b6fb9a04f9244555d">大前端的技术原理和变迁史</a></p>
+<p><a href="https://link.zhihu.com/?target=https%3A//logrocket.com/blog/history-of-frontend-frameworks/">History of front-end frameworks</a></p>
+<p><a href="https://link.zhihu.com/?target=https%3A//mp.weixin.qq.com/s/gNtpdMRL6JqNMr_tJsCVdA">WEB前端发展史</a></p>
+<p><a href="https://link.zhihu.com/?target=https%3A//www.linkresearcher.com/information/cb9aadac-a124-4708-b4f7-ecb4fd804bdb">万维网 WWW 的三十年</a></p>
+<p><a href="https://link.zhihu.com/?target=http%3A//www.ruanyifeng.com/blog/2015/02/mvcmvp_mvvm.html">MVC，MVP 和 MVVM 的图示</a></p>
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+          
+        
+          
+            <p>本文永久链接是：<a href=https://qiyuanfeng.top/202001/qianduanfazhanjianshi/>https://qiyuanfeng.top/202001/qianduanfazhanjianshi/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%89%8D%E7%AB%AF/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>前端</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%89%8D%E7%AB%AF%E5%8F%91%E5%B1%95%E5%8F%B2/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>前端发展史</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qiyuanfeng.top/202001/qianduanfazhanjianshi/&title=前端发展简史 - Qiyuan&pics=https://res.cloudinary.com/dkzvjuptx/image/upload/v1578824486/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E5%8F%91%E5%B1%95%E7%AE%80%E5%8F%B2/0_yvqyhl.png&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://qiyuanfeng.top/202001/qianduanfazhanjianshi/&title=前端发展简史 - Qiyuan&pics=https://res.cloudinary.com/dkzvjuptx/image/upload/v1578824486/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E5%8F%91%E5%B1%95%E7%AE%80%E5%8F%B2/0_yvqyhl.png&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://qiyuanfeng.top/202001/qianduanfazhanjianshi/&title=前端发展简史 - Qiyuan&pics=https://res.cloudinary.com/dkzvjuptx/image/upload/v1578824486/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E5%8F%91%E5%B1%95%E7%AE%80%E5%8F%B2/0_yvqyhl.png&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png">
+          
+        </a>
+      
+    
+      
+        
+        <div class='hoverbox'>
+          <a class='share'><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png"></a>
+          <div class='target'>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARgAAAEYCAAAAACi5bZQAAADAElEQVR42u3aQZLcQAgEwPn/p+27wxGiANmDnX2b1UrqTl0qgM8P67frgwAMGDBgwIA5A/NprscXhPf9ev3pvqe/d88DBgwYMGDAgLkHUw5AxQ1VD1z9/+n+yh8EDBgwYMCAAXMWprvxaqBLA18a9MbnAQMGDBgwYMD8dzDdglH3uWDAgAEDBgwYMNsw1fu6799+HhgwYMCAAQPm34GJG1QvH3j6+691IsGAAQMGDBgwfwwmXW8dZOt3+zxgwIABAwYMmDMw09UNVE/Q6QdZOw8YMGDAgAED5gxMNyClQNPgtQX7uE8wYMCAAQMGzBmYaZBLG3DpgbuDQ92BJjBgwIABAwbMHZhq8NkqEHULT93rVSAwYMCAAQMGzD2YbYA08KUHSYHi4AgGDBgwYMCAOQfTLexMC1zTgJk23h6fDwYMGDBgwIA5A7NdeIoLQ8UA9nZwBAMGDBgwYMDcg+kedLrB7nNeHzwCAwYMGDBgwJyBSQPYtOCUFo6mBa94f2DAgAEDBgyYszDdg6UDPdVgNg2C8aARGDBgwIABA+YMTBrkUojpgFBaMEsbf2DAgAEDBgyYuzBbL54erFuo6gbRdsMNDBgwYMCAAfM1MN0Xp/dtDQClwS0eKAIDBgwYMGDAnIHZemEaDKv3dQtgZYhuoQoMGDBgwIAB83Uw08C2PfDT/QDdgScwYMCAAQMGzD2YdMPVgtX287cad+VCFRgwYMCAAQPmDExa4NkqPKUFqungUxzwwIABAwYMGDDnYKYNr63CVDoQlDbkwIABAwYMGDD3YKYrfXH63G7BqRogwYABAwYMGDB3YaZBabtB1w2EKUS54QYGDBgwYMCA+XqYbvCqwnVBpgEy/sBgwIABAwYMmLMw2wGqO8Az/TDpBwMDBgwYMGDAgOkOFHUbeVuDRmDAgAEDBgwYMN0Bnu6gz/YgExgwYMCAAQPmLkx6wOrGptffGjQCAwYMGDBgwNyH6TaupoWp7uDR1kARGDBgwIABA+YujAUGDBgwYMCAObZ+AjZZ4jve//iNAAAAAElFTkSuQmCC">
+          </div>
+        </div>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/202002/java8xintexing/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Java 8 新特性——Optional  使用详解</p>
+                <p class='content'>最近在被 code review 的时候，组里大佬对我代码中几处使用 if 判断对象是否为空的地方提了一句话：
+“使用 Optional ，能不用 null 就不用 null”
+Java 8 的...</p>
+              </a>
+            
+            
+              <a class='next' href='/201912/dockerfencengcunchujicunchuqudongjianjie/'>
+                <p class='title'>Docker分层存储及存储驱动简介<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>我最初是怎么接触到 Docker 的已经无法追溯，可能是大学期间闲来无事，不知道哪里看到了 Docker 的介绍，便在自己电脑上装了一个玩玩，在当时也没有意识到这项技术的应用性，感觉自己不怎么用...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+      </section>
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%89%8D%E7%AB%AF"><span class="toc-text">什么是前端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript-%E8%AF%AD%E8%A8%80%E7%9A%84%E5%8E%86%E5%8F%B2"><span class="toc-text">JavaScript 语言的历史</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Web%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF%E6%BC%94%E8%BF%9B"><span class="toc-text">Web开发技术演进</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Web-2-0"><span class="toc-text">Web 2.0</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MVC-model-view-controller"><span class="toc-text">MVC (model-view-controller)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MVVM-Model-View-ViewModel"><span class="toc-text">MVVM (Model-View-ViewModel)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SPA-single-page-application"><span class="toc-text">SPA (single-page application)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SSR-server-side-render"><span class="toc-text">SSR (server side render)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Node-amp-%E5%85%A8%E6%A0%88"><span class="toc-text">Node &amp; 全栈</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+    </div>
+    
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/qiyuan098@gmail.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/csuqiyuan"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://volantis.js.org/" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2019-2020 qiyuanfeng</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <div>
+    
+      
+  
+
+  <div id="rightmenu-wrapper">
+    <ul class="list-v rightmenu" id="rightmenu-content">
+      <li class='option'>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-text' onclick='document.execCommand("copy")'><i class='fa fa-copy fa-fw'></i>复制文本</a>
+        <hr id='hr-text'>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-href'><i class='fa fa-link fa-fw'></i>复制链接</a>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-open-href'><i class='fa fa-external-link-square-alt fa-fw'></i>在新标签页打开</a>
+        <hr id='hr-href'>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-src'><i class='fa fa-image fa-fw'></i>复制图片地址</a>
+        <hr id='hr-src'>
+      </li>
+      <li class='navigation'>
+        <a class='nav icon-only fix-cursor-default' onclick='history.back()'><i class='fa fa-arrow-left fa-fw'></i></a>
+        <a class='nav icon-only fix-cursor-default' onclick='history.forward()'><i class='fa fa-arrow-right fa-fw'></i></a>
+        <a class='nav icon-only fix-cursor-default' onclick='window.location.reload()'><i class='fa fa-redo fa-fw'></i></a>
+        <a class='nav icon-only fix-cursor-default' href='/'><i class='fa fa-home fa-fw'></i></a>
+      </li>
+      <hr>
+      
+        
+      
+        
+          
+    <li>
+      <a class='vlts-menu fix-cursor-default' href=https://volantis.js.org/faqs/
+        
+        
+        
+        
+          id="https:volantisjsorgfaqs"
+        >
+        <i class='fa fa-question fa-fw'></i> 常见问题
+      </a>
+    </li>
+  
+        
+      
+        
+          
+    <li>
+      <a class='vlts-menu fix-cursor-default' href=https://volantis.js.org/examples/
+        
+        
+        
+        
+          id="https:volantisjsorgexamples"
+        >
+        <i class='fa fa-rss fa-fw'></i> 示例博客
+      </a>
+    </li>
+  
+        
+      
+        
+          
+    <li>
+      <a class='vlts-menu fix-cursor-default' href=https://volantis.js.org/contributors/
+        
+        
+        
+        
+          id="https:volantisjsorgcontributors"
+        >
+        <i class='fa fa-fan fa-spin fa-fw'></i> 加入社区
+      </a>
+    </li>
+  
+        
+      
+        
+          <hr>
+        
+      
+        
+          
+    <li>
+      <a class='vlts-menu fix-cursor-default' href=https://github.com/volantis-x/volantis-docs/
+        
+        
+        
+        
+          id="https:githubcomvolantis-xvolantis-docs"
+        >
+        <i class='fa fa-code-branch fa-fw'></i> 本站源码
+      </a>
+    </li>
+  
+        
+      
+        
+          
+    <li>
+      <a class='vlts-menu fix-cursor-default' href=https://github.com/volantis-x/hexo-theme-volantis/
+        
+        
+        
+        
+          id="https:githubcomvolantis-xhexo-theme-volantis"
+        >
+        <i class='fa fa-code-branch fa-fw'></i> 主题源码
+      </a>
+    </li>
+  
+        
+      
+        
+          <hr>
+        
+      
+        
+          
+    <li>
+      <a class='vlts-menu fix-cursor-default' 
+        
+        
+        
+          onclick="document.execCommand('print')"
+        
+        >
+        <i class='fa fa-print fa-fw'></i> 打印页面
+      </a>
+    </li>
+  
+        
+      
+        
+          <hr>
+        
+      
+        
+          <li class='music name'>
+            <p class='nav music-title fix-cursor-default'></p>
+          </li>
+          <li class='music ctrl'>
+            <a class='nav icon-only backward fix-cursor-default' onclick='aplayerBackward()'><i class='fa fa-step-backward fa-fw'></i></a>
+            <a class='nav icon-only toggle fix-cursor-default' onclick='aplayerToggle()'><i class='fa fa-play fa-fw'></i></a>
+            <a class='nav icon-only forward fix-cursor-default' onclick='aplayerForward()'><i class='fa fa-step-forward fa-fw'></i></a>
+          </li>
+          <li class='music volume'>
+            <a class='nav volume'>
+              <div class="aplayer-volume-bar-wrap">
+                <div class="aplayer-volume-bar fix-cursor-pointer">
+                  <div class="aplayer-volume"></div>
+                  <i class='left fa fa-volume-off fa-fw'></i>
+                  <i class='right fa fa-volume-up fa-fw'></i>
+                </div>
+              </div>
+            </a>
+          </li>
+        
+      
+    </ul>
+  </div>
+
+  <script>
+    window.document.oncontextmenu = function (event) {
+      if (event.ctrlKey) return true;
+      if (/Android|webOS|BlackBerry/i.test(navigator.userAgent)) return true;
+      return popMenu(event);
+    };
+    document.addEventListener("click", function (event) {
+      var mymenu = document.getElementById('rightmenu-wrapper');
+      mymenu.style.display = "none";
+    });
+    function popMenu(event) {
+      var mymenu = document.getElementById('rightmenu-wrapper');
+      var menuContent = document.getElementById('rightmenu-content');
+      var screenWidth = document.documentElement.clientWidth || document.body.clientWidth;
+      var screenHeight = document.documentElement.clientHeight || document.body.clientHeight;
+      mymenu.style.left = event.clientX + "px"; // 获取鼠标位置
+      mymenu.style.top = event.clientY + "px";
+      mymenu.style.display = 'block';
+      if (event.clientX * 2 > screenWidth) {
+        menuContent.classList.add('left');
+      } else {
+        menuContent.classList.remove('left');
+      }
+      if (event.clientY * 2 > screenHeight) {
+        menuContent.classList.add('top');
+      } else {
+        menuContent.classList.remove('top');
+      }
+
+      let hrText = document.getElementById('hr-text');
+      let hrSrc = document.getElementById('hr-src');
+      let hrHref = document.getElementById('hr-href');
+
+      // 选中图片
+      let copySrc = document.getElementById('menu-copy-src');
+      if (copySrc != undefined) {
+        if (event.target.currentSrc) {
+          copySrc.style.display = 'block';
+          copySrc.addEventListener("click", function (e) {
+            copyString(event.target.currentSrc);
+          },{once: true});
+          hrSrc.style.display = 'block';
+        } else {
+          copySrc.style.display = 'none';
+          hrSrc.style.display = 'none';
+        }
+      }
+
+      // 选中按钮
+      // 判断是不是按钮
+      let href = '';
+      if (event.path) {
+        for (i = 0; i < event.path.length; i++) {
+          if (event.path[i].href != undefined && event.path[i].href.length > 0) {
+            href = event.path[i].href;
+          }
+        }
+      }
+
+      let copyText = document.getElementById('menu-copy-text');
+      copyText.style.display = 'none';
+      hrText.style.display = 'none';
+      if (href.length == 0) {
+        // 选中文本
+        if (window.getSelection().toString()) {
+          copyText.style.display = 'block';
+          hrText.style.display = 'block';
+        }
+      }
+
+      // 在新标签页打开
+      let openHref = document.getElementById('menu-open-href');
+      if (openHref != undefined) {
+        if (href.length > 0) {
+          openHref.style.display = 'block';
+          openHref.addEventListener("click", function (e) {
+            window.open(href);
+          },{once: true});
+          hrHref.style.display = 'block';
+        } else {
+          openHref.style.display = 'none';
+          hrHref.style.display = 'none';
+        }
+      }
+      // 复制链接
+      let copyHref = document.getElementById('menu-copy-href');
+      if (copyHref != undefined) {
+        if (href.length > 0) {
+          copyHref.style.display = 'block';
+          copyHref.addEventListener("click", function (e) {
+            copyString(href);
+          },{once: true});
+        } else {
+          copyHref.style.display = 'none';
+        }
+      }
+
+      // 有音乐播放器
+      if (true == true) {
+        // 如果有aplayer，初始化一下
+      	try {
+      		checkAPlayer();
+          updateTitle();
+      	} catch (error) {
+      		console.log(error);
+      	}
+      }
+
+      return false; // 该行代码确保系统自带的右键菜单不会被调出
+    }
+    function hideMenu() {
+      document.getElementById('rightmenu-wrapper').style.display = 'none';
+    }
+    function copyString(str) {
+      const input = document.createElement('input');
+      input.setAttribute('readonly', 'readonly');
+      document.body.appendChild(input);
+      input.setAttribute('value', str);
+      input.select();
+      document.execCommand('copy');
+      document.body.removeChild(input);
+    }
+    document.execCommand('click');
+  </script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
+
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.jpg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+  <script>
+    let APlayerController = new Object();
+    APlayerController.id = '3175833810';  // 设定全局音乐播放ID
+    APlayerController.volume = '0.7';
+  </script>
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js"></script>
+
+  
+    
+<script src="/js/aplayer.js"></script>
+
+  
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = ''.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+
+    let ALLPATH = '';
+    if(ALLPATH != '') pageUrl = ALLPATH;
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: pageUrl,
+      appId: "jwY5Gcq8reVKakGecE4pAoTb-gzGzoHsz",
+      appKey: "c271ro6eQjqM0FrGsPXJYUUR",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+<!-- darkmodejs -->
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+<!-- scrollreveal -->
+
+  <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    function pjax_scrollrebeal() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '32px',
+        duration: '800',
+        interval: '20',
+        scale: '1',
+        easing: 'ease-out'
+      });
+    }
+
+    $(function () {
+      pjax_scrollrebeal();
+    });
+  </script>
+
+<!-- ******************************** -->
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+<!-- ******************************** -->
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+
+  
+    
+<script src="/js/search.js"></script>
+
+  
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js" data-pjax></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+
+
+
+
+
+
+    
+      
+
+
+<script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script>
+
+<!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
+    <script>
+      window.ShowLoading = function() {
+        NProgress.start();
+      };
+      window.HideLoading = function() {
+        NProgress.done();
+      }
+    </script>
+  
+</div>
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      $.fancybox.close();    // 关闭弹窗
+      $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+      $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      $('.s-top').unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+      window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+      // 
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+
+      try{
+        pjax_fancybox();
+        
+          
+          if ('.cover') {
+            $('.cover').backstretch("resize");
+          } else {
+            $.backstretch("resize");
+          }
+        
+        
+        
+          pjax_scrollrebeal();
+        
+        
+          pjax_initCopyCode();
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+      window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.HideLoading();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>
