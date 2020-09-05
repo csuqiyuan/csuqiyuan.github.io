@@ -18,7 +18,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>分类：Docker - Qiyuan</title>
+  <title>归档：2020/9 - Qiyuan</title>
   
 
   
@@ -320,7 +320,7 @@
   
 
 
-  <div class="l_body nocover">
+  <div class="l_body">
     <div class='body-wrapper' id="pjax-container">
       
         <!--此文件用来存放一些不方便取值的变量--> 
@@ -339,16 +339,16 @@
  
 <script> 
   // 处理封面 此时 jquery 还没加载 
-  if ("none" == "none") { // 移除封面 
+  if ("blog" == "none") { // 移除封面 
     document.getElementsByClassName('cover')[0].style.display = "none"; 
     document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
     document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
   } else { 
-    if ("none" == "blog") { // 半屏 
+    if ("blog" == "blog") { // 半屏 
       document.getElementsByClassName('cover')[0].classList.remove("full"); 
       document.getElementsByClassName('cover')[0].classList.add("half"); 
       document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
-    } else if ("none" == "docs") { // 全屏 
+    } else if ("blog" == "docs") { // 全屏 
       document.getElementsByClassName('cover')[0].classList.remove("half"); 
       document.getElementsByClassName('cover')[0].classList.add("full"); 
       document.getElementsByClassName('scroll-down')[0].style.display = ""; 
@@ -362,11 +362,9 @@
       
       
 
-
 <div class='l_main'>
-  
-    
-      
+	
+		
   <section class="post-list ">
     
       
@@ -387,14 +385,14 @@
     
       
       
-        <a title='Docker分层存储及存储驱动简介' href='/201912/dockerfencengcunchujicunchuqudongjianjie/'><img class='thumbnail' src='https://res.cloudinary.com/dkzvjuptx/image/upload/v1577004386/Docker/Docker%E5%88%86%E5%B1%82%E5%AD%98%E5%82%A8%E5%8F%8A%E5%AD%98%E5%82%A8%E9%A9%B1%E5%8A%A8%E7%AE%80%E4%BB%8B/docker_fjs2xj.jpg'></a>
+        <a title='权限管理-RBAC模型' href='/202009/quanxianguanlirbacmoxing/'><img class='thumbnail' src='https://res.cloudinary.com/dkzvjuptx/image/upload/v1599311521/Others/%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86-RBAC%E6%A8%A1%E5%9E%8B/admin_zypnwo.jpg'></a>
       
       <div class="meta" id="header-meta">
         
           
   <h2 class="title">
-    <a href="/201912/dockerfencengcunchujicunchuqudongjianjie/">
-      Docker分层存储及存储驱动简介
+    <a href="/202009/quanxianguanlirbacmoxing/">
+      权限管理-RBAC模型
     </a>
   </h2>
 
@@ -419,9 +417,9 @@
               
   
   <div class='new-meta-item category'>
-    <a href='/categories/Docker/' rel="nofollow">
+    <a href='/categories/%E5%85%B6%E4%BB%96/' rel="nofollow">
       <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>Docker</p>
+      <p>其他</p>
     </a>
   </div>
 
@@ -432,7 +430,7 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2019年12月22日</p>
+    <p>发布于：2020年9月5日</p>
   </a>
 </div>
 
@@ -442,9 +440,9 @@
               
 <div class="new-meta-item comments-count">
   
-  <a href="/201912/dockerfencengcunchujicunchuqudongjianjie/#comments">
+  <a href="/202009/quanxianguanlirbacmoxing/#comments">
     <i class="fas fa-comment-dots fa-fw"></i>
-    <span class="valine-comment-count" data-xid="/201912/dockerfencengcunchujicunchuqudongjianjie/">0</span>
+    <span class="valine-comment-count" data-xid="/202009/quanxianguanlirbacmoxing/">0</span>
     <span class="leancloud-comments-count">&nbsp;</span>
   </a>
 </div>
@@ -469,12 +467,12 @@
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
       
-        <p>了解过 Docker 的人应该多多少少知道 Docker 是用一种分层的方式来存储镜像和容器。本文主要简单介绍了 Docker 存储结构，以及在这种存储结构下对使用 Docker 的各种建议等。</p>
+        <p>最近接触了一个 RBAC 权限管理系统的需求，将 RBAC 模型做一个总结</p>
       
     </div>
     
       
-        <a class= "readmore" href="/201912/dockerfencengcunchujicunchuqudongjianjie/">
+        <a class= "readmore" href="/202009/quanxianguanlirbacmoxing/">
           阅读全文 <i class="fas fa-chevron-right"></i>
         </a>
       
@@ -496,9 +494,7 @@
   
 
 
-    
-  
-
+	
 </div>
 <aside class='l_side'>
   
@@ -637,6 +633,14 @@
 
 </aside>
 
+
+
+
+
+	<!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
+	
+
+	
 
 
     </div>

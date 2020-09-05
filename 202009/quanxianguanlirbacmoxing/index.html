@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta name="renderer" content="webkit">
@@ -18,9 +16,13 @@
 
   <!-- 页面元数据 -->
   
-  <title>分类：Docker - Qiyuan</title>
+  <title>权限管理-RBAC模型 - Qiyuan</title>
+  
+    <meta name="keywords" content="权限管理,RBAC,ACL,权限控制模型,模型">
   
 
+  
+    <meta name="description" content="最近接触了一个 RBAC 权限管理系统的需求，将 RBAC 模型做一个总结">
   
 
   <!-- feed -->
@@ -83,7 +85,7 @@
   
   
   <div class="cover-wrapper">
-    <cover class='cover ' style="display: none;">
+    <cover class='cover post' style="display: none;">
       <div class='cover-body'>
   <div class='a'>
     
@@ -329,8 +331,8 @@
  
  
 <div id="pjax-data" style="display: none"> 
-  <div id="pjax-ispage">false</div> 
-  <div id="pjax-pageTitle"></div> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">权限管理-RBAC模型</div> 
   <div id="pjax-enable-cover">true</div> 
   <div id="pjax-comment-path">none</div> 
   <div id="pjax-comment-placeholder">none</div> 
@@ -362,41 +364,28 @@
       
       
 
-
 <div class='l_main'>
   
-    
-      
-  <section class="post-list ">
-    
-      
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+
   
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
 
 
   <section class='meta'>
     
       
       
-        <a title='Docker分层存储及存储驱动简介' href='/201912/dockerfencengcunchujicunchuqudongjianjie/'><img class='thumbnail' src='https://res.cloudinary.com/dkzvjuptx/image/upload/v1577004386/Docker/Docker%E5%88%86%E5%B1%82%E5%AD%98%E5%82%A8%E5%8F%8A%E5%AD%98%E5%82%A8%E9%A9%B1%E5%8A%A8%E7%AE%80%E4%BB%8B/docker_fjs2xj.jpg'></a>
+        <a title='权限管理-RBAC模型' href='/202009/quanxianguanlirbacmoxing/'><img class='thumbnail' src='https://res.cloudinary.com/dkzvjuptx/image/upload/v1599311521/Others/%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86-RBAC%E6%A8%A1%E5%9E%8B/admin_zypnwo.jpg'></a>
       
       <div class="meta" id="header-meta">
         
           
-  <h2 class="title">
-    <a href="/201912/dockerfencengcunchujicunchuqudongjianjie/">
-      Docker分层存储及存储驱动简介
+  <h1 class="title">
+    <a href="/202009/quanxianguanlirbacmoxing/">
+      权限管理-RBAC模型
     </a>
-  </h2>
+  </h1>
 
 
         
@@ -419,9 +408,9 @@
               
   
   <div class='new-meta-item category'>
-    <a href='/categories/Docker/' rel="nofollow">
+    <a href='/categories/%E5%85%B6%E4%BB%96/' rel="nofollow">
       <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>Docker</p>
+      <p>其他</p>
     </a>
   </div>
 
@@ -432,7 +421,7 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2019年12月22日</p>
+    <p>发布于：2020年9月5日</p>
   </a>
 </div>
 
@@ -440,20 +429,36 @@
           
             
               
-<div class="new-meta-item comments-count">
-  
-  <a href="/201912/dockerfencengcunchujicunchuqudongjianjie/#comments">
-    <i class="fas fa-comment-dots fa-fw"></i>
-    <span class="valine-comment-count" data-xid="/201912/dockerfencengcunchujicunchuqudongjianjie/">0</span>
-    <span class="leancloud-comments-count">&nbsp;</span>
-  </a>
-</div>
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：2.1k字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：7分钟</p>
+    </a>
+  </div>
 
 
             
           
             
               
+  <div class="new-meta-item browse valine">
+    <a class='notlink'>
+      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+      
+      <span id="/202009/quanxianguanlirbacmoxing/" class="leancloud_visitors" data-flag-title="权限管理-RBAC模型">
+      <p>
+        <span class="leancloud-visitors-count"></span>
+      </p>
+      </span>
+    </a>
+  </div>
+
 
             
           
@@ -466,171 +471,282 @@
   </section>
 
 
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>了解过 Docker 的人应该多多少少知道 Docker 是用一种分层的方式来存储镜像和容器。本文主要简单介绍了 Docker 存储结构，以及在这种存储结构下对使用 Docker 的各种建议等。</p>
-      
-    </div>
-    
-      
-        <a class= "readmore" href="/201912/dockerfencengcunchujicunchuqudongjianjie/">
-          阅读全文 <i class="fas fa-chevron-right"></i>
-        </a>
-      
-    
-  </section>
-</article>
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <p>最近接触了一个 RBAC 权限管理系统的需求，将 RBAC 模型做一个总结。</p>
+<p>在介绍 RBAC 之前，先说一下最简单最基础的权限控制模型，ACL 模型。</p>
+<h2 id="访问控制列表（ACL-Access-Control-List）"><a href="#访问控制列表（ACL-Access-Control-List）" class="headerlink" title="访问控制列表（ACL : Access Control List）"></a>访问控制列表（ACL : Access Control List）</h2><p>ACL 即控制访问列表，它规定了资源可以被哪些用户进行操作。</p>
+<p>在 ACL 模型下，权限管理是围绕“资源”来设定的，用户是直接与资源相关联的。</p>
+<blockquote>
+<p>资源：一般来说，可以是某个页面，也可以是某个 URI </p>
+</blockquote>
+<p>那么进行配置时，需要维护一个表，即“访问控制列表”，这个表中需要描述出“资源-用户”之间的关系，比如：</p>
+<table>
+<thead>
+<tr>
+<th align="center">id</th>
+<th align="center">resource</th>
+<th align="center">user_id</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">/test1</td>
+<td align="center">10000</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">/test2</td>
+<td align="center">10001</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">/test1</td>
+<td align="center">10002</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">/test3</td>
+<td align="center">10002</td>
+</tr>
+</tbody></table>
+<p>上面的表只是一种 ACL 的表现形式，能够描述出“资源-用户”之间的关系的表结构都可以作为一个 ACL 表。</p>
+<blockquote>
+<ul>
+<li>在用户请求某个资源时，需要先进行权限校验，在访问控制列表中查询是否有此资源与用户的对应关系，再返回用户是否拥有访问权限。</li>
+<li>上表我配置了三个 uri 资源，三个用户，其中 10002 用户拥有 /test1，/test3 两个资源的请求权限。</li>
+</ul>
+</blockquote>
+<p>这种权限管理模型的好处就是简单，方便，适合数据量小，数据相对静态的情况，比较容易维护。</p>
+<p>缺点也比较明显，当资源和用户量大起来的时候，不便于权限管理，试想有这么一种场景：存在多个用户拥有多个关联的访问权限，那么在新增一个用户时，需要给这个用户配置指定多个权限，新增一个关联资源或修改某个资源时，需要为所有分配了这个资源的用户修改，麻烦。</p>
+<blockquote>
+<p>什么叫关联的访问权限？</p>
+<p>比如一个系统中，新增往往伴随着编辑，那么这两个权限需要一起分配给用户。再比如某产品部门的所有人需要拥有自己产品的所有权限。</p>
+</blockquote>
+<h2 id="什么是-RBAC-？"><a href="#什么是-RBAC-？" class="headerlink" title="什么是 RBAC ？"></a>什么是 RBAC ？</h2><p>Role-Based Access Control，即，基于角色的权限控制。在这个模型中，用户不直接与权限相关联，而是通过角色关联用户与权限，角色是用户和权限之间的桥梁。</p>
+<p><img src="https://res.cloudinary.com/dkzvjuptx/image/upload/v1599306615/Others/%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86-RBAC%E6%A8%A1%E5%9E%8B/16d236221417437a_pgjr9u.jpg" alt=""></p>
+<p>相比较 ACL 模式，这样的好处是扩展性强，对于权限的管理更加方便了，在上面我们提到的问题中，可以直接为用户赋予角色，或者修改时仅维护角色中的权限，无需维护每个用户下的权限。这种模式适用于用户数量、权限数量多的平台。</p>
+<p>RBAC 又分为四类：RBAC0，RBAC1，RBAC2，RBAC3，其中 RBAC0 是最基础最简单的，其余皆为在 RBAC0 之上的升级。</p>
+<h3 id="RBAC0-模型"><a href="#RBAC0-模型" class="headerlink" title="RBAC0 模型"></a>RBAC0 模型</h3><p>其实这种模型就是我们上面提到的，用户、角色、权限的多对多关系。</p>
+<p><img src="https://res.cloudinary.com/dkzvjuptx/image/upload/v1599307130/Others/%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86-RBAC%E6%A8%A1%E5%9E%8B/17010f6a1bd085bc_iqkksc.png" alt=""></p>
+<p>在进行权限判断时，容易出现一种错误的实现方式，就是通过用户角色来判断用户执行权限，例如涨薪权限配置在 hr 角色下，在实现权限判断时，判断用户是否拥有 hr 角色。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> user.hasRole(<span class="string">&quot;hr&quot;</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-          </div>
-        
-      
-    
-  </section>
+<p>这样的做法是错误的，如果后面需要让主管角色也有调薪权限，那么就该修改源代码了，麻烦不？正确做法应该是：先查询用户所拥有的角色，再根据角色查询用户拥有的权限，最后判断用户是否拥有某个的权限。</p>
+<h3 id="RBAC1-模型"><a href="#RBAC1-模型" class="headerlink" title="RBAC1 模型"></a>RBAC1 模型</h3><p>RBAC1 模型又可以叫做“角色继承的 RBAC 模型”，引入了角色的继承概念，即角色具有上下级的关系，子角色可以继承父角色的所有权限。</p>
+<blockquote>
+<p> 角色继承的种类又分两种：</p>
+<p>一般继承关系：要求角色继承关系是一个绝对偏序关系，允许角色间的多继承</p>
+<p>受限继承关系：进一步要求角色继承关系是一个树结构，实现角色间的单继承</p>
+</blockquote>
+<p>这里我本人不太理解的一点是，不清楚角色之间的继承实现，网络上其他文章讲到这里也比较含糊不清，或者有多种说法。</p>
+<p>一种说法是，权限小的角色继承权限大的角色，即权限大的角色是父角色，权限小的角色是子角色，是为了防止出现权限分配失误，子角色拥有父角色所没有的权限，所以子角色继承父角色的权限，只能在父角色权限下进行删减。</p>
+<p>另一种说法相反，权限大的角色继承权限小的角色，即权限小的角色是父角色，权限大的角色是子角，例如一个公司中，主管是拥有员工所持有的权限的，所以主管继承员工的权限，不需要再手动为主管角色配置基础的员工权限，只要配置主管独有的权限即可。</p>
+<p>两种说法都有其道理，可以看做是 RBAC1 的两个不同实现方式吧，根据需求来选用。</p>
+<h3 id="RBAC2-模型"><a href="#RBAC2-模型" class="headerlink" title="RBAC2 模型"></a>RBAC2 模型</h3><p>RBAC2 模型又可以叫“约束控制的 RBAC 模型”，增加了对角色的一些限制：</p>
+<ol>
+<li><strong>互斥角色：</strong>互斥角色指权限相互制约的两个角色，同一用户只能分配到一组互斥角色中至多一个角色。比如运动员和裁判。案例：一个人不能既是运动员又是裁判。</li>
+<li><strong>基数约束：</strong>一个角色被分配的用户数量受限，一个用户可拥有的角色数量受限，一个角色对应的访问权限数量受限。案例：某角色比较重要，比如超级管理员角色，需要规定角色数量防止重要权限泄露。</li>
+<li><strong>先觉条件角色：</strong>用户想获得某上级角色，必须先获得其下一级角色。案例：先拥有副总经理权限，才能拥有总经理权限。</li>
+<li><strong>运行时互斥：</strong>例如，允许一个用户具有两个角色的成员资格，但在运行中不可同时激活这两个角色，案例：同一个用户拥有多个角色，角色的权限有重叠，以较大权限为准。</li>
+</ol>
+<p>上面的约束也可以叫做“责任分离”，责任分离包括静态责任分离和动态责任分离。</p>
+<ol>
+<li>静态责任分离：用户无法同时被赋予互斥的角色</li>
+<li>动态责任分离，用户可以被授予互斥的角色，但在一次会话中不能同时激活自身拥有的互斥的角色</li>
+</ol>
+<h3 id="RBAC3-模型"><a href="#RBAC3-模型" class="headerlink" title="RBAC3 模型"></a>RBAC3 模型</h3><p>又被称为“统一模型”，它包含了 RBAC1 和 RBAC2 的特性，既有角色分层又有角色约束。</p>
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><p>RBAC 模型不是一成不变的，上述几种只是较为常见的，它也可以有更多的实现方式，只要是基于“用户-角色-权限”这套思想实现的，都可以称之为 RBAC 模型，在实际使用中要根据需求来决定，比如 RBAC1 中两种不同的角色继承方式的实现。下面还有一些其他的类型。</p>
+<h4 id="用户组"><a href="#用户组" class="headerlink" title="用户组"></a>用户组</h4><p>如果熟悉 linux 的同学，应该知道 linux 系统有用户和用户组的概念，也一定熟悉在使用 ll 命令或 chmod 命令为文件设置权限。见下图（请忽略它是个 mac 系统）</p>
+<p><img src="https://res.cloudinary.com/dkzvjuptx/image/upload/v1599309939/Others/%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86-RBAC%E6%A8%A1%E5%9E%8B/linux_uxpefw.png" alt=""></p>
+<p>这里你大概就懂了，用户组的作用就是包含多个用户，只需要为用户组配置角色，就不用为这些用户单独配置角色了，进一步方便了权限的管理。比如新建一个开发者用户组，为开发者用户组配置了某些角色，将开发者添加进开发者用户组，所有开发者用户都会获得该用户组下的数据权限</p>
+<p>用户组的形式也是多样的，除了上面提到的这种，更常见的是作为“组织”，比如总公司与分公司，不同地区的分公司组织拥有不同的角色权限，也可以是作为“职位”，不同职位的员工拥有不同的角色权限。</p>
+
+          
+            <div class='article_footer'>
+              
+                
   
     
-    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-    
     
 
-  
-
-
-    
-  
-
-</div>
-<aside class='l_side'>
-  
-  
-    
-    
-
-<section class="widget blogger shadow desktop mobile">
+<section class="widget copyright  desktop mobile">
   <div class='content'>
     
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://res.cloudinary.com/dkzvjuptx/image/upload/v1578820041/info/favicon_s4pmzz.jpg'/>
-        </a>
-      
-    
-    
-      <div class='text'>
+      <blockquote>
         
-          <h2>冯启源</h2>
-        
-        
-          <p>我爱学习，学习爱我</p>
+          
+            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
 
-        
-        
-          <p><span id="jinrishici-sentence">Qiyuan</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/qiyuan098@gmail.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
           
         
           
-            <a href="https://github.com/csuqiyuan"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
+            <p>本文永久链接是：<a href=https://qiyuanfeng.top/202009/quanxianguanlirbacmoxing/>https://qiyuanfeng.top/202009/quanxianguanlirbacmoxing/</a></p>
           
         
-      </div>
+      </blockquote>
     
   </div>
 </section>
 
   
 
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          
   
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86-RBAC/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>权限管理,RBAC</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qiyuanfeng.top/202009/quanxianguanlirbacmoxing/&title=权限管理-RBAC模型 - Qiyuan&pics=https://res.cloudinary.com/dkzvjuptx/image/upload/v1599311521/Others/%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86-RBAC%E6%A8%A1%E5%9E%8B/admin_zypnwo.jpg&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png">
+          
+        </a>
+      
     
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://qiyuanfeng.top/202009/quanxianguanlirbacmoxing/&title=权限管理-RBAC模型 - Qiyuan&pics=https://res.cloudinary.com/dkzvjuptx/image/upload/v1599311521/Others/%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86-RBAC%E6%A8%A1%E5%9E%8B/admin_zypnwo.jpg&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://qiyuanfeng.top/202009/quanxianguanlirbacmoxing/&title=权限管理-RBAC模型 - Qiyuan&pics=https://res.cloudinary.com/dkzvjuptx/image/upload/v1599311521/Others/%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86-RBAC%E6%A8%A1%E5%9E%8B/admin_zypnwo.jpg&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png">
+          
+        </a>
+      
+    
+      
+        
+        <div class='hoverbox'>
+          <a class='share'><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png"></a>
+          <div class='target'>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATgAAAE4CAAAAADqFLC2AAADqElEQVR42u3aS27jQAwFQN3/0sl+AEP9SMaiPdU7I/qwqzfMo64fq7QuBODAgQNngQO3BO4qrn/vf/mim/tfXXd6/+n7x/YLDhw4cODAgQO3DO64AQwLmXreKXT6vrg+cODAgQMHDhy4pXDTDWcKcgpbhezuFxw4cODAgQMH7lvgpoLC9IC6gSk4cODAgQMHDtz/DtdtgFPI7gAcHDhw4MCBAwfuW+G6A93u36vBZ7Vhf2ySDw4cOHDgwIEDNwQ3FTh+yu/yfsGBAwcOHDhw4JbAdddpcJkGm2mAmb6/vF9w4MCBAwcOHLglcKeFTn0ImH4A2A4eD+s8dgAHDhw4cODAgVsOVx0wVxvbqUF3F+r2PnDgwIEDBw4cuGVw3Q1Xr68e0NTf4zrAgQMHDhw4cOCWwVUb03Qw3W14pz94jOsCBw4cOHDgwIFbBlcdEKcbrDaw1QFy2rjfHgg4cODAgQMHDtyHwr17o1ONcQr0sm5w4MCBAwcOHLglcN1GuFvIVEBZPfD4eeDAgQMHDhw4cMvgui9MG+HTgquD4/Sgj+sEBw4cOHDgwIFbApcW2t142nh3garBKjhw4MCBAwcO3Ha46QLS66rg1YH56X7AgQMHDhw4cOC2w1UHtlMNdNpI/1VQOfafAzhw4MCBAwcO3Jvg/mrA/K4gslt33ECDAwcOHDhw4MAth6s2jtWCTxviKmw1KI0bYHDgwIEDBw4cuDfBpQFjtcF8CnJ8sA4OHDhw4MCBA7cE7rThnRpAdzdWHViPBaDgwIEDBw4cOHBL4LpgpxDdQXN18F09eHDgwIEDBw4cuE+HS4POqeBxOtg8bZxv6wMHDhw4cODAgVsCN924dgtNB+HX0Dr2AAcOHDhw4MCBWw43tcFqcJjCp9Dp/sGBAwcOHDhw4LbBdYPHKaDbD/oOr+sGsscNMDhw4MCBAwcO3MNw1Uax21h2G+nuILwa3IIDBw4cOHDgwG2HqzaY1eBzGqwabN7+BgcOHDhw4MCBWwJ3FdcUXDVQTA82/X2cAIMDBw4cOHDgwD0M1y2kCtENTKsHUm6wwYEDBw4cOHDglsJNDYzTQW8aPKZ1jDX24MCBAwcOHDhwXwLXLaw6YJ4eYB8fBDhw4MCBAwcO3JfBpQ1xN4jsBpTl4BMcOHDgwIEDB24pXDqQToPMKYBuQJoO0sGBAwcOHDhw4LbCTQWSaYCYQt89vzpIP34OOHDgwIEDBw7cEjgrW+DAgQMHzgIH7uH1C2+bAvmzSxBtAAAAAElFTkSuQmCC">
+          </div>
+        </div>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+            
+              <a class='next' href='/202008/golangcontextshenrulijie/'>
+                <p class='title'>Golang Context 深入理解<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>golang 中控制并发有几种经典方式，一种是 WaitGroup，一种是 channel ，一种是 Context。
+我认为三者的功能并不冲突，分别负责了并发控制的两个部分；WaitGroup...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
   
 
-  <section class="widget category shadow desktop">
+  
+    
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+      </section>
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
     
   <header>
     
-      <a href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/Docker/" href="/categories/Docker/"
-            id="categoriesDocker"
-            ><div class='name'>Docker</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Java/" href="/categories/Java/"
-            id="categoriesJava"
-            ><div class='name'>Java</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Jenkins/" href="/categories/Jenkins/"
-            id="categoriesJenkins"
-            ><div class='name'>Jenkins</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/golang/" href="/categories/golang/"
-            id="categoriesgolang"
-            ><div class='name'>golang</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%85%B6%E4%BB%96/" href="/categories/%E5%85%B6%E4%BB%96/"
-            id="categoriesE585B6E4BB96"
-            ><div class='name'>其他</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%89%8D%E7%AB%AF/" href="/categories/%E5%89%8D%E7%AB%AF/"
-            id="categoriesE5898DE7ABAF"
-            ><div class='name'>前端</div><div class='badge'>(1)</div></a></li>
-        
-      </ul>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E5%88%97%E8%A1%A8%EF%BC%88ACL-Access-Control-List%EF%BC%89"><span class="toc-text">访问控制列表（ACL : Access Control List）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-RBAC-%EF%BC%9F"><span class="toc-text">什么是 RBAC ？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RBAC0-%E6%A8%A1%E5%9E%8B"><span class="toc-text">RBAC0 模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RBAC1-%E6%A8%A1%E5%9E%8B"><span class="toc-text">RBAC1 模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RBAC2-%E6%A8%A1%E5%9E%8B"><span class="toc-text">RBAC2 模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RBAC3-%E6%A8%A1%E5%9E%8B"><span class="toc-text">RBAC3 模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-text">其他</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%BB%84"><span class="toc-text">用户组</span></a></li></ol></li></ol></li></ol>
     </div>
   </section>
 
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow desktop mobile">
-    
-  <header>
-    
-      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/Docker/" style="font-size: 14px; color: #999">Docker</a> <a href="/tags/Java/" style="font-size: 14px; color: #999">Java</a> <a href="/tags/Java-8-%E6%96%B0%E7%89%B9%E6%80%A7/" style="font-size: 14px; color: #999">Java 8 新特性</a> <a href="/tags/UnionFS/" style="font-size: 14px; color: #999">UnionFS</a> <a href="/tags/golang/" style="font-size: 14px; color: #999">golang</a> <a href="/tags/jenkins/" style="font-size: 14px; color: #999">jenkins</a> <a href="/tags/job%E8%A7%A6%E5%8F%91/" style="font-size: 14px; color: #999">job触发</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14px; color: #999">前端</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%8F%91%E5%B1%95%E5%8F%B2/" style="font-size: 14px; color: #999">前端发展史</a> <a href="/tags/%E5%AD%98%E5%82%A8%E9%A9%B1%E5%8A%A8/" style="font-size: 14px; color: #999">存储驱动</a> <a href="/tags/%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86-RBAC/" style="font-size: 14px; color: #999">权限管理,RBAC</a> <a href="/tags/%E7%A7%91%E5%B9%BB%E5%B0%8F%E8%AF%B4/" style="font-size: 14px; color: #999">科幻小说</a>
-    </div>
-  </section>
-
-
-  
 
   
 
