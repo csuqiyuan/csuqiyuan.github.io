@@ -16,13 +16,13 @@
 
   <!-- 页面元数据 -->
   
-  <title>权限管理-RBAC模型 - Qiyuan</title>
+  <title>对Golang指针的理解 - Qiyuan</title>
   
-    <meta name="keywords" content="权限管理,RBAC,ACL,权限控制模型,模型">
+    <meta name="keywords" content="golang,指针,参数传递,值传递,引用传递">
   
 
   
-    <meta name="description" content="最近接触了一个 RBAC 权限管理系统的需求，将 RBAC 模型做一个总结">
+    <meta name="description" content="作为一个 Java 选手，初学 Go 看到指针时，不禁回想起了大一那年被 C++ 指针支配的恐惧">
   
 
   <!-- feed -->
@@ -332,7 +332,7 @@
  
 <div id="pjax-data" style="display: none"> 
   <div id="pjax-ispage">true</div> 
-  <div id="pjax-pageTitle">权限管理-RBAC模型</div> 
+  <div id="pjax-pageTitle">对Golang指针的理解</div> 
   <div id="pjax-enable-cover">true</div> 
   <div id="pjax-comment-path">none</div> 
   <div id="pjax-comment-placeholder">none</div> 
@@ -376,14 +376,12 @@
     
       
       
-        <a title='权限管理-RBAC模型' href='/202009/quanxianguanlirbacmoxing/'><img class='thumbnail' src='https://res.cloudinary.com/dkzvjuptx/image/upload/v1599311521/Others/%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86-RBAC%E6%A8%A1%E5%9E%8B/admin_zypnwo.jpg'></a>
-      
       <div class="meta" id="header-meta">
         
           
   <h1 class="title">
-    <a href="/202009/quanxianguanlirbacmoxing/">
-      权限管理-RBAC模型
+    <a href="/202009/duigolangzhizhendelijie/">
+      对Golang指针的理解
     </a>
   </h1>
 
@@ -408,9 +406,9 @@
               
   
   <div class='new-meta-item category'>
-    <a href='/categories/%E5%85%B6%E4%BB%96/' rel="nofollow">
+    <a href='/categories/golang/' rel="nofollow">
       <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>其他</p>
+      <p>golang</p>
     </a>
   </div>
 
@@ -421,7 +419,7 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年9月5日</p>
+    <p>发布于：2020年9月19日</p>
   </a>
 </div>
 
@@ -432,13 +430,13 @@
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：2.1k字</p>
+      <p>字数：2.8k字</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
     <a class='notlink'>
       <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：7分钟</p>
+      <p>时长：11分钟</p>
     </a>
   </div>
 
@@ -451,7 +449,7 @@
     <a class='notlink'>
       <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
       
-      <span id="/202009/quanxianguanlirbacmoxing/" class="leancloud_visitors" data-flag-title="权限管理-RBAC模型">
+      <span id="/202009/duigolangzhizhendelijie/" class="leancloud_visitors" data-flag-title="对Golang指针的理解">
       <p>
         <span class="leancloud-visitors-count"></span>
       </p>
@@ -475,94 +473,83 @@
         <div class="article-entry" itemprop="articleBody">
           
           
-          <p>最近接触了一个 RBAC 权限管理系统的需求，将 RBAC 模型做一个总结。</p>
-<p>在介绍 RBAC 之前，先说一下最简单最基础的权限控制模型，ACL 模型。</p>
-<h2 id="访问控制列表（ACL-Access-Control-List）"><a href="#访问控制列表（ACL-Access-Control-List）" class="headerlink" title="访问控制列表（ACL : Access Control List）"></a>访问控制列表（ACL : Access Control List）</h2><p>ACL 即控制访问列表，它规定了资源可以被哪些用户进行操作。</p>
-<p>在 ACL 模型下，权限管理是围绕“资源”来设定的，用户是直接与资源相关联的。</p>
-<blockquote>
-<p>资源：一般来说，可以是某个页面，也可以是某个 URI </p>
-</blockquote>
-<p>那么进行配置时，需要维护一个表，即“访问控制列表”，这个表中需要描述出“资源-用户”之间的关系，比如：</p>
-<table>
-<thead>
-<tr>
-<th align="center">id</th>
-<th align="center">resource</th>
-<th align="center">user_id</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">1</td>
-<td align="center">/test1</td>
-<td align="center">10000</td>
-</tr>
-<tr>
-<td align="center">2</td>
-<td align="center">/test2</td>
-<td align="center">10001</td>
-</tr>
-<tr>
-<td align="center">3</td>
-<td align="center">/test1</td>
-<td align="center">10002</td>
-</tr>
-<tr>
-<td align="center">4</td>
-<td align="center">/test3</td>
-<td align="center">10002</td>
-</tr>
-</tbody></table>
-<p>上面的表只是一种 ACL 的表现形式，能够描述出“资源-用户”之间的关系的表结构都可以作为一个 ACL 表。</p>
-<blockquote>
-<ul>
-<li>在用户请求某个资源时，需要先进行权限校验，在访问控制列表中查询是否有此资源与用户的对应关系，再返回用户是否拥有访问权限。</li>
-<li>上表我配置了三个 uri 资源，三个用户，其中 10002 用户拥有 /test1，/test3 两个资源的请求权限。</li>
-</ul>
-</blockquote>
-<p>这种权限管理模型的好处就是简单，方便，适合数据量小，数据相对静态的情况，比较容易维护。</p>
-<p>缺点也比较明显，当资源和用户量大起来的时候，不便于权限管理，试想有这么一种场景：存在多个用户拥有多个关联的访问权限，那么在新增一个用户时，需要给这个用户配置指定多个权限，新增一个关联资源或修改某个资源时，需要为所有分配了这个资源的用户修改，麻烦。</p>
-<blockquote>
-<p>什么叫关联的访问权限？</p>
-<p>比如一个系统中，新增往往伴随着编辑，那么这两个权限需要一起分配给用户。再比如某产品部门的所有人需要拥有自己产品的所有权限。</p>
-</blockquote>
-<h2 id="什么是-RBAC-？"><a href="#什么是-RBAC-？" class="headerlink" title="什么是 RBAC ？"></a>什么是 RBAC ？</h2><p>Role-Based Access Control，即，基于角色的权限控制。在这个模型中，用户不直接与权限相关联，而是通过角色关联用户与权限，角色是用户和权限之间的桥梁。</p>
-<p><img src="https://res.cloudinary.com/dkzvjuptx/image/upload/v1599306615/Others/%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86-RBAC%E6%A8%A1%E5%9E%8B/16d236221417437a_pgjr9u.jpg" alt=""></p>
-<p>相比较 ACL 模式，这样的好处是扩展性强，对于权限的管理更加方便了，在上面我们提到的问题中，可以直接为用户赋予角色，或者修改时仅维护角色中的权限，无需维护每个用户下的权限。这种模式适用于用户数量、权限数量多的平台。</p>
-<p>RBAC 又分为四类：RBAC0，RBAC1，RBAC2，RBAC3，其中 RBAC0 是最基础最简单的，其余皆为在 RBAC0 之上的升级。</p>
-<h3 id="RBAC0-模型"><a href="#RBAC0-模型" class="headerlink" title="RBAC0 模型"></a>RBAC0 模型</h3><p>其实这种模型就是我们上面提到的，用户、角色、权限的多对多关系。</p>
-<p><img src="https://res.cloudinary.com/dkzvjuptx/image/upload/v1599307130/Others/%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86-RBAC%E6%A8%A1%E5%9E%8B/17010f6a1bd085bc_iqkksc.png" alt=""></p>
-<p>在进行权限判断时，容易出现一种错误的实现方式，就是通过用户角色来判断用户执行权限，例如涨薪权限配置在 hr 角色下，在实现权限判断时，判断用户是否拥有 hr 角色。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> user.hasRole(<span class="string">&quot;hr&quot;</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <p>作为一个 Java 选手，初学 Go 看到指针时，不禁回想起了大一那年被 C++ 指针支配的恐惧。最初对指针的用法有过不少误解和疑惑，某一天写代码时顿悟了，突然理解这些奇奇怪怪的用法是干嘛的了。</p>
+<p>不过想理解这些，得先从 Go 参数传递说起，而这也是指针最基础的用法之一。</p>
+<h2 id="需要传递引用时"><a href="#需要传递引用时" class="headerlink" title="需要传递引用时"></a>需要传递引用时</h2><p>对于任何一门语言，函数调用时传值还是传引用，是学习初期就要搞懂的，比如 Java 语言选手在学习之初都逃不开一个叫 swap 的函数。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 示例一</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> j = <span class="number">2</span>;</span><br><span class="line">        swap(i, j);</span><br><span class="line">        System.out.println(String.format(<span class="string">&quot;函数外交换后的结果：%d,%d&quot;</span>, i, j));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> tmp = a;</span><br><span class="line">        a = b;</span><br><span class="line">        b = tmp;</span><br><span class="line">        System.out.println(String.format(<span class="string">&quot;函数内交换后的结果：%d,%d&quot;</span>, a, b));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>这样的做法是错误的，如果后面需要让主管角色也有调薪权限，那么就该修改源代码了，麻烦不？正确做法应该是：先查询用户所拥有的角色，再根据角色查询用户拥有的权限，最后判断用户是否拥有某个的权限。</p>
-<h3 id="RBAC1-模型"><a href="#RBAC1-模型" class="headerlink" title="RBAC1 模型"></a>RBAC1 模型</h3><p>RBAC1 模型又可以叫做“角色继承的 RBAC 模型”，引入了角色的继承概念，即角色具有上下级的关系，子角色可以继承父角色的所有权限。</p>
-<blockquote>
-<p> 角色继承的种类又分两种：</p>
-<p>一般继承关系：要求角色继承关系是一个绝对偏序关系，允许角色间的多继承</p>
-<p>受限继承关系：进一步要求角色继承关系是一个树结构，实现角色间的单继承</p>
-</blockquote>
-<p>这里我本人不太理解的一点是，不清楚角色之间的继承实现，网络上其他文章讲到这里也比较含糊不清，或者有多种说法。</p>
-<p>一种说法是，权限小的角色继承权限大的角色，即权限大的角色是父角色，权限小的角色是子角色，是为了防止出现权限分配失误，子角色拥有父角色所没有的权限，所以子角色继承父角色的权限，只能在父角色权限下进行删减。</p>
-<p>另一种说法相反，权限大的角色继承权限小的角色，即权限小的角色是父角色，权限大的角色是子角，例如一个公司中，主管是拥有员工所持有的权限的，所以主管继承员工的权限，不需要再手动为主管角色配置基础的员工权限，只要配置主管独有的权限即可。</p>
-<p>两种说法都有其道理，可以看做是 RBAC1 的两个不同实现方式吧，根据需求来选用。</p>
-<h3 id="RBAC2-模型"><a href="#RBAC2-模型" class="headerlink" title="RBAC2 模型"></a>RBAC2 模型</h3><p>RBAC2 模型又可以叫“约束控制的 RBAC 模型”，增加了对角色的一些限制：</p>
-<ol>
-<li><strong>互斥角色：</strong>互斥角色指权限相互制约的两个角色，同一用户只能分配到一组互斥角色中至多一个角色。比如运动员和裁判。案例：一个人不能既是运动员又是裁判。</li>
-<li><strong>基数约束：</strong>一个角色被分配的用户数量受限，一个用户可拥有的角色数量受限，一个角色对应的访问权限数量受限。案例：某角色比较重要，比如超级管理员角色，需要规定角色数量防止重要权限泄露。</li>
-<li><strong>先觉条件角色：</strong>用户想获得某上级角色，必须先获得其下一级角色。案例：先拥有副总经理权限，才能拥有总经理权限。</li>
-<li><strong>运行时互斥：</strong>例如，允许一个用户具有两个角色的成员资格，但在运行中不可同时激活这两个角色，案例：同一个用户拥有多个角色，角色的权限有重叠，以较大权限为准。</li>
-</ol>
-<p>上面的约束也可以叫做“责任分离”，责任分离包括静态责任分离和动态责任分离。</p>
-<ol>
-<li>静态责任分离：用户无法同时被赋予互斥的角色</li>
-<li>动态责任分离，用户可以被授予互斥的角色，但在一次会话中不能同时激活自身拥有的互斥的角色</li>
-</ol>
-<h3 id="RBAC3-模型"><a href="#RBAC3-模型" class="headerlink" title="RBAC3 模型"></a>RBAC3 模型</h3><p>又被称为“统一模型”，它包含了 RBAC1 和 RBAC2 的特性，既有角色分层又有角色约束。</p>
-<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><p>RBAC 模型不是一成不变的，上述几种只是较为常见的，它也可以有更多的实现方式，只要是基于“用户-角色-权限”这套思想实现的，都可以称之为 RBAC 模型，在实际使用中要根据需求来决定，比如 RBAC1 中两种不同的角色继承方式的实现。下面还有一些其他的类型。</p>
-<h4 id="用户组"><a href="#用户组" class="headerlink" title="用户组"></a>用户组</h4><p>如果熟悉 linux 的同学，应该知道 linux 系统有用户和用户组的概念，也一定熟悉在使用 ll 命令或 chmod 命令为文件设置权限。见下图（请忽略它是个 mac 系统）</p>
-<p><img src="https://res.cloudinary.com/dkzvjuptx/image/upload/v1599309939/Others/%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86-RBAC%E6%A8%A1%E5%9E%8B/linux_uxpefw.png" alt=""></p>
-<p>这里你大概就懂了，用户组的作用就是包含多个用户，只需要为用户组配置角色，就不用为这些用户单独配置角色了，进一步方便了权限的管理。比如新建一个开发者用户组，为开发者用户组配置了某些角色，将开发者添加进开发者用户组，所有开发者用户都会获得该用户组下的数据权限</p>
-<p>用户组的形式也是多样的，除了上面提到的这种，更常见的是作为“组织”，比如总公司与分公司，不同地区的分公司组织拥有不同的角色权限，也可以是作为“职位”，不同职位的员工拥有不同的角色权限。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">函数内交换后的结果：2,1</span><br><span class="line">函数外交换后的结果：1,2</span><br></pre></td></tr></table></figure>
+
+<p>把两个数字传递到函数内部做交换操作，内部确实被交换了，但外部的两个变量在执行了 swap 函数后没有发生变化，原因就是 Java 的基本类型在参数传递时传值的。解决方法也很简单，传入将两个数字作为数组的元素或者对象的字段，传入数组或对象进行操作。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 示例二</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] array = &#123;<span class="number">1</span>, <span class="number">2</span>&#125;;</span><br><span class="line">        swap(array);</span><br><span class="line">        System.out.println(<span class="string">&quot;函数外交换后的结果：&quot;</span> + Arrays.toString(array));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> tmp = nums[<span class="number">0</span>];</span><br><span class="line">        nums[<span class="number">0</span>] = nums[<span class="number">1</span>];</span><br><span class="line">        nums[<span class="number">1</span>] = tmp;</span><br><span class="line">        System.out.println(<span class="string">&quot;函数内交换后的结果：&quot;</span> + Arrays.toString(nums));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">函数内交换后的结果：[2, 1]</span><br><span class="line">函数外交换后的结果：[2, 1]</span><br></pre></td></tr></table></figure>
+
+<p>这里不用 Go 做“示例一”的演示了，只看 Go 如何处理这种情况：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 示例三</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    a := <span class="number">1</span></span><br><span class="line">    b := <span class="number">2</span></span><br><span class="line">    ap := &amp;a</span><br><span class="line">    bp := &amp;b</span><br><span class="line">    fmt.Println(<span class="string">&quot;函数外指针指向的地址:&quot;</span>, ap, bp)</span><br><span class="line">    swap(ap, bp)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;函数外交换后：%d,%d\n&quot;</span>, a, b)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">swap</span><span class="params">(p1 *<span class="keyword">int</span>, p2 *<span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">  fmt.Println(<span class="string">&quot;函数内指针指向的地址:&quot;</span>,p1,p2)</span><br><span class="line">    tmp := *p1</span><br><span class="line">    *p1 = *p2</span><br><span class="line">    *p2 = tmp</span><br><span class="line">    fmt.Printf(<span class="string">&quot;函数内交换后：%d,%d\n&quot;</span>, *p1, *p2)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">函数外指针指向的地址: 0xc0000b2268 0xc0000b2290</span><br><span class="line">函数内指针指向的地址: 0xc0000b2268 0xc0000b2290</span><br><span class="line">函数内交换后：2,1</span><br><span class="line">函数外交换后：2,1</span><br></pre></td></tr></table></figure>
+
+<p>为了看得明显一点，我把指针指向的地址也打印了出来，因为传入的指针 p1、p2 指向了 a、b 地址，在 swap 函数中，我们是用了 *p1 和 *p2 来操作，即直接操作 0xc0000b2268、0xc0000b2290 对应的内存块的值，所以函数内的操作也会反映到函数外的 a、b 上去。</p>
+<h2 id="定义结构体方法-函数时"><a href="#定义结构体方法-函数时" class="headerlink" title="定义结构体方法/函数时"></a>定义结构体方法/函数时</h2><p>只要熟悉了上一节的内容，理解这个用法应该不难，主要是为了在方法中修改对象字段可以作用在对象本身上。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 示例四</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">   person := &amp;Person&#123;</span><br><span class="line">      name:    <span class="string">&quot;qiyuanfeng&quot;</span>,</span><br><span class="line">      age:     <span class="number">18</span>,</span><br><span class="line">      email:   <span class="string">&quot;xxxx@xxxx.xx&quot;</span>,</span><br><span class="line">      address: <span class="string">&quot;深圳市南山区&quot;</span>,</span><br><span class="line">   &#125;</span><br><span class="line">   fmt.Println(person)</span><br><span class="line">   person.changeName(<span class="string">&quot;fengqiyuan&quot;</span>)</span><br><span class="line">   fmt.Println(person)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Person <span class="keyword">struct</span> &#123;</span><br><span class="line">   name    <span class="keyword">string</span></span><br><span class="line">   age     <span class="keyword">int</span></span><br><span class="line">   email   <span class="keyword">string</span></span><br><span class="line">   address <span class="keyword">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(person *Person)</span> <span class="title">changeName</span><span class="params">(name <span class="keyword">string</span>)</span></span>&#123;</span><br><span class="line">   person.name = name</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&amp;&#123;qiyuanfeng 18 xxxx@xxxx.xx 深圳市南山区&#125;</span><br><span class="line">&amp;&#123;fengqiyuan 18 xxxx@xxxx.xx 深圳市南山区&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，调用对象的 changeName 函数修改 name 字段，成功作用在了对象本身上。如果在定义函数时不使用 *Person ，那么这个修改将不会起作用。所以如果结构体的函数需要对结构体做修改，则使用指针类型，如果不需要，则可以不使用指针类型。</p>
+<h2 id="大对象拷贝或传递"><a href="#大对象拷贝或传递" class="headerlink" title="大对象拷贝或传递"></a>大对象拷贝或传递</h2><p>使用初期，在项目中见到了很多指针的用法，让我很不解。比如：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">handler1</span><span class="params">(p Person)</span></span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">handler2</span><span class="params">(p *Person)</span></span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">handler3</span><span class="params">(a <span class="keyword">int</span>)</span> *<span class="title">Person</span></span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">handler4</span><span class="params">(a <span class="keyword">int</span>)</span> <span class="title">Person</span></span></span><br></pre></td></tr></table></figure>
+
+<p>再比如：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> personList1 []Person</span><br><span class="line"><span class="keyword">var</span> personList2 []*Person</span><br><span class="line"><span class="keyword">var</span> personList2 *[]*Person</span><br></pre></td></tr></table></figure>
+
+<p>刚开始看的懵，这几种写法有区别么？感觉用哪个都一样啊。</p>
+<p>其实是因为进行拷贝操作时，比如参数传递，赋值操作等，传递地址比传递整个对象要方便得多，如下示例：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 示例五</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">   person := &amp;Person&#123;</span><br><span class="line">      name:    <span class="string">&quot;qiyuanfeng&quot;</span>,</span><br><span class="line">      age:     <span class="number">18</span>,</span><br><span class="line">      email:   <span class="string">&quot;xxxx@xxxx.xx&quot;</span>,</span><br><span class="line">      address: <span class="string">&quot;深圳市南山区&quot;</span>,</span><br><span class="line">   &#125;</span><br><span class="line">   fmt.Println(unsafe.Sizeof(person))</span><br><span class="line">   fmt.Println(unsafe.Sizeof(*person))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Person <span class="keyword">struct</span> &#123;</span><br><span class="line">   name    <span class="keyword">string</span></span><br><span class="line">   age     <span class="keyword">int</span></span><br><span class="line">   email   <span class="keyword">string</span></span><br><span class="line">   address <span class="keyword">string</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">8</span><br><span class="line">56</span><br></pre></td></tr></table></figure>
+
+<p>这么一个简单的结构体构造出的对象，它本身有 56 个字节大小，而其地址仅 8 字节。设想如果是一个很大的对象，可能有成千上万个字节，进行拷贝操作，肯定会一定程度上影响性能。知道这一点后，上面的几种写法就很容易理解了：</p>
+<ul>
+<li>传参数时如果传地址，就不会拷贝整个对象；</li>
+<li>返回值如果使用地址，就不用在赋值操作时拷贝整个对象；</li>
+<li>列表中保存地址（[]Person），那么这个列表的大小将大大减少，如果还是觉得大，还可以传递列表的地址（[]*Person）；</li>
+</ul>
+<p>当然，也不能盲目地传地址，例如你在函数内做了修改，也会影响函数外的原对象，但你不想影响原对象，这个时候就不能拿地址传进函数喽，要按需使用。</p>
+<h2 id="扩展：Go-语言参数传递"><a href="#扩展：Go-语言参数传递" class="headerlink" title="扩展：Go 语言参数传递"></a>扩展：Go 语言参数传递</h2><p>看了上面关于传递引用的描述，也不要被迷惑了。</p>
+<ul>
+<li><strong>Go 中函数传递的本质是拷贝，传递的总是原来这个东西的一个副本，一个拷贝。</strong></li>
+<li><strong>指针也只是一种数据类型而已！我们虽然传递了 *int ，其实传递的是这个指针的一份拷贝，又为这个拷贝赋予了原指针的值。</strong></li>
+<li><strong>也就是说，Go 中所有传递的本质都是值传递。</strong></li>
+</ul>
+<p>下面看这个例子，我把函数外的 ap、bp 指针地址和传入函数内的 p1、p2 指针地址打印出来，：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 示例六</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    a := <span class="number">1</span></span><br><span class="line">    b := <span class="number">2</span></span><br><span class="line">    ap := &amp;a</span><br><span class="line">    bp := &amp;b</span><br><span class="line">    fmt.Println(<span class="string">&quot;函数外指针的地址:&quot;</span>, &amp;ap, &amp;bp)</span><br><span class="line">    swap(ap, bp)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;函数外交换后：%d,%d\n&quot;</span>, a, b)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">swap</span><span class="params">(p1 *<span class="keyword">int</span>, p2 *<span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">  fmt.Println(<span class="string">&quot;函数内指针的地址:&quot;</span>, &amp;p1, &amp;p2)</span><br><span class="line">    tmp := *p1</span><br><span class="line">    *p1 = *p2</span><br><span class="line">    *p2 = tmp</span><br><span class="line">    fmt.Printf(<span class="string">&quot;函数内交换后：%d,%d\n&quot;</span>, *p1, *p2)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">函数外指针的地址: 0xc000010028 0xc000010030</span><br><span class="line">函数内指针的地址: 0xc000010040 0xc000010048</span><br><span class="line">函数内交换后：2,1</span><br><span class="line">函数外交换后：2,1</span><br></pre></td></tr></table></figure>
+
+<p>虽然指针指向的地址是一样的，但函数内外指针本身的地址不一样了，说明函数传参对于指针来说，也只是传递了指针的一个拷贝。用面向对象的说法讲，传递对象 ap 时，新建了一个对象 p1，并将 p1 指向 ap 的地址，p1 和 ap 并不是同一个对象，但指向了同一块内存。</p>
+<p>事实上，在 Java 中使用数组和对象等进行所谓“引用传递”时，也是这样的做法，并没有真正传递引用，而是传递了一个对象的拷贝。</p>
+<p>下面这张图，以 a、ap、p1 为例，说明了他们之间的关系</p>
+<p><img src="https://res.cloudinary.com/dkzvjuptx/image/upload/v1600524856/Golang/%E5%AF%B9Golang%E6%8C%87%E9%92%88%E7%9A%84%E7%90%86%E8%A7%A3/1_noqfjr.png" alt=""></p>
+<p>上图中我画了个简单的内存模型图，左侧为内存地址（小括号中为这个地址对应的标记）右侧是四个内存块，其中 a 的值为 10，ap 和 p1 的值为 &amp;a，即 a 内存块的地址。ap 和 p1 却又不是同一个内存块，正是因为 p1 是由 ap 复制而来的，而非真正的 ap。</p>
+<p>在这一点上，指针传参的本质与直接传参的本质是一样的，都是对值的复制，只是指针的值是内存地址而已。</p>
+<h3 id="关于-Map、Channel、Slice-的迷惑"><a href="#关于-Map、Channel、Slice-的迷惑" class="headerlink" title="关于 Map、Channel、Slice 的迷惑"></a>关于 Map、Channel、Slice 的迷惑</h3><p>了解清楚了 Go 的参数传递，但大家常说，map、chan、slice 是引用传递，对于这三种类型来说，好像并不太符合我们上面的说法，因为我们无需传指针就可以同步修改函数外的值。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 示例七</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    persons:=<span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">int</span>)</span><br><span class="line">    persons[<span class="string">&quot;张三&quot;</span>] = <span class="number">10</span></span><br><span class="line">    fmt.Printf(<span class="string">&quot;函数外map的内存地址是：%p\n&quot;</span>, &amp;persons)</span><br><span class="line">    modify(persons)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;函数外，修改map后的值：%v\n&quot;</span>,persons)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">modify</span><span class="params">(p <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">    fmt.Printf(<span class="string">&quot;函数里接收到map的内存地址是：%p\n&quot;</span>, &amp;p)</span><br><span class="line">    <span class="comment">//fmt.Printf(&quot;函数里接收到map的内存地址是：%p\n&quot;, p)</span></span><br><span class="line">    p[<span class="string">&quot;张三&quot;</span>] = <span class="number">20</span></span><br><span class="line">    fmt.Printf(<span class="string">&quot;函数内，修改map后的值：%v\n&quot;</span>,p)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">函数外map的内存地址是：0xc000010028</span><br><span class="line">函数里接收到map的内存地址是：0xc000010038</span><br><span class="line">函数内，修改map后的值：map[张三:20]</span><br><span class="line">函数外，修改map后的值：map[张三:20]</span><br></pre></td></tr></table></figure>
+
+<p>函数内外的 map 的内存地址<strong>并不一样！</strong>说明这也是一个值传递。那么函数内是如何影响了函数外的 map 呢？</p>
+<p>看一看 makemap 的源码，这个函数是使用 make 创建 map 所调用的底层函数。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">makemap</span><span class="params">(t *maptype, hint <span class="keyword">int</span>, h *hmap)</span> *<span class="title">hmap</span></span>&#123;</span><br><span class="line">  ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，使用 make 函数创建的 map 返回的是 *hmap，也就是说，<code>persons:=make(map[string]int)</code> 中，persons 实质上是一个 *hmap 的指针，这也解释了为什么我们只传入 persons 也能修改外面的 map，也就意味着，persons 内存储的实质上是一个内存地址，只是 Go 语言帮我们做了处理，我们打印时看到的是 map[张三:20] 这种形式。那么我们使用 %p 强行打印 persons 地址看看，如果它不是一个地址，那么会无法正常显示。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 示例八</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    persons:=<span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">int</span>)</span><br><span class="line">    persons[<span class="string">&quot;张三&quot;</span>] = <span class="number">10</span></span><br><span class="line">    fmt.Printf(<span class="string">&quot;函数外map的内存地址是：%p\n&quot;</span>, persons)</span><br><span class="line">    modify(persons)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;函数外，修改map后的值：%v\n&quot;</span>,persons)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">modify</span><span class="params">(p <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">    fmt.Printf(<span class="string">&quot;函数里接收到map的内存地址是：%p\n&quot;</span>, p)</span><br><span class="line">    <span class="comment">//fmt.Printf(&quot;函数里接收到map的内存地址是：%p\n&quot;, p)</span></span><br><span class="line">    p[<span class="string">&quot;张三&quot;</span>] = <span class="number">20</span></span><br><span class="line">    fmt.Printf(<span class="string">&quot;函数内，修改map后的值：%v\n&quot;</span>,p)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">函数外 map 的内存地址是：0xc00009a750</span><br><span class="line">函数里接收到map的内存地址是：0xc00009a750</span><br><span class="line">函数内，修改map后的值：map[张三:20]</span><br><span class="line">函数外，修改map后的值：map[张三:20]</span><br></pre></td></tr></table></figure>
+
+<p>使用上面示例七几乎同样的代码，只是把 &amp;persons 和 &amp;p 去掉了 &amp;。结果是，可以打印出来，而且所指向的内存地址一致。channel 与 map 同理。</p>
+<p>但 slice 的原理不一样，slice 的本质是一种结构体+元素指针的混合类型。关于 slice 我还没有来得及深入了解，暂且不提。</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[Go语言参数传递是传值还是引用](</p>
 
           
             <div class='article_footer'>
@@ -583,7 +570,7 @@
           
         
           
-            <p>本文永久链接是：<a href=https://qiyuanfeng.top/202009/quanxianguanlirbacmoxing/>https://qiyuanfeng.top/202009/quanxianguanlirbacmoxing/</a></p>
+            <p>本文永久链接是：<a href=https://qiyuanfeng.top/202009/duigolangzhizhendelijie/>https://qiyuanfeng.top/202009/duigolangzhizhendelijie/</a></p>
           
         
       </blockquote>
@@ -608,7 +595,7 @@
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86-RBAC/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>权限管理,RBAC</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/golang/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>golang</p></a></div>
 
 
         
@@ -626,7 +613,7 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qiyuanfeng.top/202009/quanxianguanlirbacmoxing/&title=权限管理-RBAC模型 - Qiyuan&pics=https://res.cloudinary.com/dkzvjuptx/image/upload/v1599311521/Others/%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86-RBAC%E6%A8%A1%E5%9E%8B/admin_zypnwo.jpg&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qiyuanfeng.top/202009/duigolangzhizhendelijie/&title=对Golang指针的理解 - Qiyuan&summary="
           
           >
           
@@ -638,7 +625,7 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://qiyuanfeng.top/202009/quanxianguanlirbacmoxing/&title=权限管理-RBAC模型 - Qiyuan&pics=https://res.cloudinary.com/dkzvjuptx/image/upload/v1599311521/Others/%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86-RBAC%E6%A8%A1%E5%9E%8B/admin_zypnwo.jpg&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://qiyuanfeng.top/202009/duigolangzhizhendelijie/&title=对Golang指针的理解 - Qiyuan&summary="
           
           >
           
@@ -650,7 +637,7 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://qiyuanfeng.top/202009/quanxianguanlirbacmoxing/&title=权限管理-RBAC模型 - Qiyuan&pics=https://res.cloudinary.com/dkzvjuptx/image/upload/v1599311521/Others/%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86-RBAC%E6%A8%A1%E5%9E%8B/admin_zypnwo.jpg&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://qiyuanfeng.top/202009/duigolangzhizhendelijie/&title=对Golang指针的理解 - Qiyuan&summary="
           
           >
           
@@ -664,7 +651,7 @@
         <div class='hoverbox'>
           <a class='share'><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png"></a>
           <div class='target'>
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATgAAAE4CAAAAADqFLC2AAADqElEQVR42u3aS27jQAwFQN3/0sl+AEP9SMaiPdU7I/qwqzfMo64fq7QuBODAgQNngQO3BO4qrn/vf/mim/tfXXd6/+n7x/YLDhw4cODAgQO3DO64AQwLmXreKXT6vrg+cODAgQMHDhy4pXDTDWcKcgpbhezuFxw4cODAgQMH7lvgpoLC9IC6gSk4cODAgQMHDtz/DtdtgFPI7gAcHDhw4MCBAwfuW+G6A93u36vBZ7Vhf2ySDw4cOHDgwIEDNwQ3FTh+yu/yfsGBAwcOHDhw4JbAdddpcJkGm2mAmb6/vF9w4MCBAwcOHLglcKeFTn0ImH4A2A4eD+s8dgAHDhw4cODAgVsOVx0wVxvbqUF3F+r2PnDgwIEDBw4cuGVw3Q1Xr68e0NTf4zrAgQMHDhw4cOCWwVUb03Qw3W14pz94jOsCBw4cOHDgwIFbBlcdEKcbrDaw1QFy2rjfHgg4cODAgQMHDtyHwr17o1ONcQr0sm5w4MCBAwcOHLglcN1GuFvIVEBZPfD4eeDAgQMHDhw4cMvgui9MG+HTgquD4/Sgj+sEBw4cOHDgwIFbApcW2t142nh3garBKjhw4MCBAwcO3Ha46QLS66rg1YH56X7AgQMHDhw4cOC2w1UHtlMNdNpI/1VQOfafAzhw4MCBAwcO3Jvg/mrA/K4gslt33ECDAwcOHDhw4MAth6s2jtWCTxviKmw1KI0bYHDgwIEDBw4cuDfBpQFjtcF8CnJ8sA4OHDhw4MCBA7cE7rThnRpAdzdWHViPBaDgwIEDBw4cOHBL4LpgpxDdQXN18F09eHDgwIEDBw4cuE+HS4POqeBxOtg8bZxv6wMHDhw4cODAgVsCN924dgtNB+HX0Dr2AAcOHDhw4MCBWw43tcFqcJjCp9Dp/sGBAwcOHDhw4LbBdYPHKaDbD/oOr+sGsscNMDhw4MCBAwcO3MNw1Uax21h2G+nuILwa3IIDBw4cOHDgwG2HqzaY1eBzGqwabN7+BgcOHDhw4MCBWwJ3FdcUXDVQTA82/X2cAIMDBw4cOHDgwD0M1y2kCtENTKsHUm6wwYEDBw4cOHDglsJNDYzTQW8aPKZ1jDX24MCBAwcOHDhwXwLXLaw6YJ4eYB8fBDhw4MCBAwcO3JfBpQ1xN4jsBpTl4BMcOHDgwIEDB24pXDqQToPMKYBuQJoO0sGBAwcOHDhw4LbCTQWSaYCYQt89vzpIP34OOHDgwIEDBw7cEjgrW+DAgQMHzgIH7uH1C2+bAvmzSxBtAAAAAElFTkSuQmCC">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATgAAAE4CAAAAADqFLC2AAADq0lEQVR42u3awXLiQAwEUP7/p5P7VlGelmSjsG9uBLBnni8dNa8fq7ReCMCBAwfOAgduCdyruP79/uUN33zu6u/V61/tt3xecODAgQMHDhy4ZXDHATD8fLrh0/tcff8KtHpecODAgQMHDhy4rXBTgbcakNNAfBp8p84LDhw4cODAgQP3LXDpgHL6e91gDQ4cOHDgwIEDB643QDwtoE/3Bw4cOHDgwIED97/BxQVtsxjuDkxP77+uyQcHDhw4cODAgRuCS9dp0N36unxecODAgQMHDhy4JXDdlW60GkjT4HrXAgcOHDhw4MCB2wI39UO+qwFj+v7U4DENvmMTYHDgwIEDBw4cuJvh0sL39P008HaL7fQ65f2DAwcOHDhw4MAtgasOHrs/FJwKztViOd0XOHDgwIEDBw7cNrg0WKbBM4XuQnSL7ktocODAgQMHDhy4pXDdArlbGN9933SweVlIgwMHDhw4cODAfQguHfRNBcpqkV0N1l1QcODAgQMHDhy47XBTG+oW2F3I2wak4MCBAwcOHDhwS+BSwGmQ0wd2+ro72GwX0uDAgQMHDhw4cA/BdQeP6YG6xXc1OKcB//g/B3DgwIEDBw4cuA/BVQvaalCdelDdAF8O/uDAgQMHDhw4cEvgngq26canB6PpwDRu8sGBAwcOHDhw4D4ENxUkq8G6+v1uQX1bIQ0OHDhw4MCBA3czXHXAlwbWNIDePRgtP0Bw4MCBAwcOHLglcN0LpoPNFHRq8NktvMGBAwcOHDhw4LbCdQd9aeBMi+G7B6vH1wUHDhw4cODAgVsC193gKXS1QE6B0wI8fuDgwIEDBw4cOHDL4arvdzeeDhqrD7Y62AQHDhw4cODAgdsCVw2onw6u1UK8+jlw4MCBAwcOHLhtcOMBcaiI7hbc6f7HC2lw4MCBAwcOHLiH4bpB9LTQfg2vuwppcODAgQMHDhy4rXCnG9kWTKtB/HQ/b1+DAwcOHDhw4MAtgeuuFLoKkh54an/xfw7gwIEDBw4cOHAPwXUHh93BZfkAzWL7FBYcOHDgwIEDB247XDfwVg+SFtrVgWY68AQHDhw4cODAgftrcO3Cthh0bztoM+CDAwcOHDhw4MB9K9wpQPrDwuoDnLre2/uAAwcOHDhw4MB9KdwpTDdQTxXScQAHBw4cOHDgwIFbClctpKuDxqceSPVBgQMHDhw4cODAbYerFrbdz00NJqtA6YMHBw4cOHDgwIHbAmdlCxw4cODAWeDAfXj9AsjSfcTuSECOAAAAAElFTkSuQmCC">
           </div>
         </div>
       
@@ -684,16 +671,12 @@
         
           <div class="prev-next">
             
-              <a class='prev' href='/202009/duigolangzhizhendelijie/'>
-                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>对Golang指针的理解</p>
-                <p class='content'>作为一个 Java 选手，初学 Go 看到指针时，不禁回想起了大一那年被 C++ 指针支配的恐惧。最初对指针的用法有过不少误解和疑惑，某一天写代码时顿悟了，突然理解这些奇奇怪怪的用法是干嘛的了。...</p>
-              </a>
             
-            
-              <a class='next' href='/202008/golangcontextshenrulijie/'>
-                <p class='title'>Golang Context 深入理解<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-                <p class='content'>golang 中控制并发有几种经典方式，一种是 WaitGroup，一种是 channel ，一种是 Context。
-我认为三者的功能并不冲突，分别负责了并发控制的两个部分；WaitGroup...</p>
+              <a class='next' href='/202009/quanxianguanlirbacmoxing/'>
+                <p class='title'>权限管理-RBAC模型<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>最近接触了一个 RBAC 权限管理系统的需求，将 RBAC 模型做一个总结。
+在介绍 RBAC 之前，先说一下最简单最基础的权限控制模型，ACL 模型。
+访问控制列表（ACL : Access ...</p>
               </a>
             
           </div>
@@ -748,7 +731,7 @@
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E5%88%97%E8%A1%A8%EF%BC%88ACL-Access-Control-List%EF%BC%89"><span class="toc-text">访问控制列表（ACL : Access Control List）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-RBAC-%EF%BC%9F"><span class="toc-text">什么是 RBAC ？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RBAC0-%E6%A8%A1%E5%9E%8B"><span class="toc-text">RBAC0 模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RBAC1-%E6%A8%A1%E5%9E%8B"><span class="toc-text">RBAC1 模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RBAC2-%E6%A8%A1%E5%9E%8B"><span class="toc-text">RBAC2 模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RBAC3-%E6%A8%A1%E5%9E%8B"><span class="toc-text">RBAC3 模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-text">其他</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%BB%84"><span class="toc-text">用户组</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9C%80%E8%A6%81%E4%BC%A0%E9%80%92%E5%BC%95%E7%94%A8%E6%97%B6"><span class="toc-text">需要传递引用时</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E7%BB%93%E6%9E%84%E4%BD%93%E6%96%B9%E6%B3%95-%E5%87%BD%E6%95%B0%E6%97%B6"><span class="toc-text">定义结构体方法&#x2F;函数时</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%A7%E5%AF%B9%E8%B1%A1%E6%8B%B7%E8%B4%9D%E6%88%96%E4%BC%A0%E9%80%92"><span class="toc-text">大对象拷贝或传递</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%EF%BC%9AGo-%E8%AF%AD%E8%A8%80%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92"><span class="toc-text">扩展：Go 语言参数传递</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E-Map%E3%80%81Channel%E3%80%81Slice-%E7%9A%84%E8%BF%B7%E6%83%91"><span class="toc-text">关于 Map、Channel、Slice 的迷惑</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol>
     </div>
   </section>
 
